@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".activities.CustomerSignUp">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar" />
+        <View
+            android:id="@+id/v"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_below="@id/toolbar"
+            android:background="@color/lightGreen"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:fillViewport="true"
+            android:layout_below="@id/v"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:src="@drawable/ic_dummy_user"
+                    android:layout_gravity="center"
+                    android:id="@+id/profileImage"
+                    app:civ_border_width="2dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:civ_border_color="@color/black"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"/>
+
+                <EditText
+                    android:id="@+id/edt_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/ic_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:hint="@string/first_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="40"
+                    android:maxLines="1"
+                    android:padding="@dimen/_12sdp"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:id="@+id/edt_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/ic_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:hint="@string/last_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="40"
+                    android:maxLines="1"
+                    android:padding="@dimen/_12sdp"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/ic_background"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:hint="@string/email_id"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="40"
+                    android:maxLines="1"
+                    android:padding="@dimen/_12sdp"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:id="@+id/edt_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/ic_background"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:maxLength="14"
+                    android:maxLines="1"
+                    android:padding="@dimen/_12sdp"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/ic_background"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLength="40"
+                    android:maxLines="1"
+                    android:padding="@dimen/_12sdp"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:id="@+id/tvSelectCtg"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Select Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:id="@+id/categoryLayout"
+                    android:background="@drawable/ic_background"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:id="@+id/spnCategory"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvIdProof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/yourIdProof"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:id="@+id/imgId"
+                    android:background="@drawable/dotted_background"
+                    android:padding="@dimen/_10sdp"
+                    app:srcCompat="@drawable/ic_add"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_height="@dimen/_100sdp"/>
+
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/edittextbackground"
+                    android:text="@string/sign_up"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAlreadyHaveAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:text="@string/already_have_an_account_sign_in"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include android:id="@+id/loader"
+            android:visibility="gone"
+            layout="@layout/layout_loader"/>
+    </RelativeLayout>
+</layout>

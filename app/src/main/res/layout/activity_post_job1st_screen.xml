@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.PostJob1stScreen">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvBType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Business type"
+                    android:textColor="@color/taxyYellow"
+                    android:textSize="@dimen/_15sdp" />
+
+
+                <RadioGroup
+                    android:id="@+id/rdBTypeGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvBType"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rdIndpendent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Independent"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <RadioButton
+                        android:id="@+id/rdCompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Company"
+                        android:textSize="@dimen/_12sdp" />
+                </RadioGroup>
+
+
+                <TextView
+                    android:id="@+id/tvJType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rdBTypeGrp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Job type"
+                    android:textColor="@color/taxyYellow"
+                    android:textSize="@dimen/_15sdp" />
+
+
+                <com.llollox.androidprojects.compoundbuttongroup.CompoundButtonGroup
+                    android:id="@+id/rdJType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvJType"
+                    app:compoundType="radio"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    app:entries="@array/job_categories"
+                    app:labelOrder="after"
+                    app:numCols="2" />
+
+                <TextView
+                    android:id="@+id/tvEType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rdJType"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Employee type"
+                    android:textColor="@color/taxyYellow"
+                    android:textSize="@dimen/_15sdp" />
+
+
+                <RadioGroup
+                    android:id="@+id/rdETypeGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvEType"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rdHourly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hourly"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <RadioButton
+                        android:id="@+id/rdMonthly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Monthly"
+                        android:textSize="@dimen/_12sdp" />
+                </RadioGroup>
+
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rdETypeGrp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Location"
+                    android:textColor="@color/taxyYellow"
+                    android:textSize="@dimen/_15sdp" />
+
+                <EditText
+                    android:id="@+id/edLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvLocation"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/ic_background"
+                    android:drawableStart="@drawable/ic_add_location_black_24dp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:padding="@dimen/_12sdp"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:layout_below="@id/edLocation"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/btnNext"
+                    android:text="Next"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:textAllCaps="false"
+                    android:background="@color/taxyYellow"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+</layout>

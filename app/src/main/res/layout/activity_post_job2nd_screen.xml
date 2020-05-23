@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PostJob2ndScreen">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:fillViewport="true"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvWorkTiming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Work time"
+                android:textColor="@color/taxyYellow"
+                android:textSize="@dimen/_15sdp" />
+
+
+            <LinearLayout
+                android:id="@+id/layoutTime"
+                android:layout_below="@id/tvWorkTiming"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tvFrom"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/ic_background"
+                    android:hint="From Time"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvTo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_background"
+                    android:hint="To Time"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Day"
+                android:layout_below="@id/layoutTime"
+                android:textColor="@color/taxyYellow"
+                android:textSize="@dimen/_15sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/tvDay"
+                android:id="@+id/rvDay"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <Switch
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:id="@+id/switchImmediatelyStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/rvDay"
+                android:gravity="left|center"
+                android:text="Immediately start"
+                android:textColor="@color/taxyYellow"
+                android:theme="@style/SCBSwitch" />
+
+
+            <TextView
+                android:id="@+id/tvSalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Salary :"
+                android:layout_below="@id/switchImmediatelyStart"
+                android:textColor="@color/taxyYellow"
+                android:textSize="@dimen/_15sdp" />
+
+
+            <TextView
+                android:id="@+id/tvHourly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Hourly(Rs)"
+                android:layout_toEndOf="@id/tvSalary"
+                android:layout_below="@id/switchImmediatelyStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:gravity="center"
+                android:id="@+id/edHourly"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_below="@id/switchImmediatelyStart"
+                android:background="@drawable/ic_background"
+                android:layout_toEndOf="@id/tvMonthly"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_width="@dimen/_70sdp"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:maxLength="3"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/tvMonthly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Monthly(Rs)"
+                android:layout_toEndOf="@id/tvSalary"
+                android:layout_below="@id/tvSalary"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:gravity="center"
+                android:id="@+id/edMonthly"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_below="@id/tvSalary"
+                android:background="@drawable/ic_background"
+                android:layout_toEndOf="@id/tvMonthly"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_width="@dimen/_70sdp"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:maxLength="6"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:id="@+id/tvPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Images"
+                android:layout_below="@id/edMonthly"
+                android:textColor="@color/taxyYellow"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:background="@drawable/dotted_background"
+                android:padding="@dimen/_10sdp"
+                app:srcCompat="@drawable/ic_add"
+                android:layout_below="@id/tvPhoto"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_height="@dimen/_100sdp"/>
+
+            <Button
+                android:layout_below="@id/imgProduct"
+                android:id="@+id/btnLogin"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Post job"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/edittextbackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <include android:id="@+id/loader"
+        android:visibility="gone"
+        layout="@layout/layout_loader"/>
+</RelativeLayout>
+</layout>

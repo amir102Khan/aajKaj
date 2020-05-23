@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+<RelativeLayout
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Login">
+
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/aajkaajnew"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_130sdp"/>
+
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/lightGreen"
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/lightGrey"
+            android:id="@+id/input_layout_name"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/user_phone"
+                android:maxLength="10"
+
+                android:textSize="@dimen/_12sdp"
+                android:hint="Mobile number"
+                android:inputType="number"
+                android:textColorHint="@color/lightGrey"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <Button
+            android:layout_below="@id/input_layout_name"
+            android:id="@+id/btnLogin"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/edittextbackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/btnLogin"
+            android:textSize="@dimen/_15sdp"
+            android:text="@string/don_t_have_an_account_sign_up"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RelativeLayout>
+
+    <include android:id="@+id/loader"
+        android:visibility="gone"
+        layout="@layout/layout_loader"/>
+
+</RelativeLayout>
+
+        <include
+            android:id="@+id/bottomSheet"
+            layout="@layout/layout_bottom_sheet_signup_type" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

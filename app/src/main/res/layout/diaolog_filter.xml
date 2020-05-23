@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/layoutHead"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Filter"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_alignParentEnd="true"
+            android:text="X"
+            android:padding="@dimen/_5sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+
+
+    <Spinner
+        android:padding="@dimen/_5sdp"
+        android:entries="@array/categories"
+        android:id="@+id/spnCategory"
+        android:layout_margin="@dimen/_15sdp"
+        android:layout_below="@id/layoutHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:textSize="@dimen/_15sdp"
+        android:paddingStart="@dimen/_20sdp"
+        android:textAllCaps="false"
+        android:paddingEnd="@dimen/_20sdp"
+        android:textColor="@color/white"
+        android:text="Apply"
+        android:id="@+id/btnApply"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/spnCategory"
+        android:background="@drawable/edittextbackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

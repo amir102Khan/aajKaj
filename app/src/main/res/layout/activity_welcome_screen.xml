@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WelcomeScreen">
+
+    <ImageView
+        android:id="@+id/imgJob"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_candidate"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"/>
+
+    <Button
+        android:paddingStart="@dimen/_25sdp"
+        android:paddingEnd="@dimen/_25sdp"
+        android:textSize="@dimen/_14sdp"
+        android:background="@color/taxyYellow"
+        android:text="Find A job"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imgJob"
+        android:id="@+id/btnGetJob"
+        android:layout_marginStart="@dimen/_60sdp"
+        android:layout_marginEnd="@dimen/_60sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+    <ImageView
+        android:id="@+id/imgHire"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_hire"
+        android:layout_below="@id/imgJob"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"/>
+
+
+    <Button
+
+        android:layout_marginStart="@dimen/_60sdp"
+        android:layout_marginEnd="@dimen/_60sdp"
+        android:paddingStart="@dimen/_25sdp"
+        android:paddingEnd="@dimen/_25sdp"
+        android:textSize="@dimen/_14sdp"
+        android:background="@drawable/button_background"
+        android:text="Hire someone"
+
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imgHire"
+        android:id="@+id/btnHire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
+</layout>

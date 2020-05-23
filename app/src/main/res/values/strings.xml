@@ -1,0 +1,340 @@
+<resources>
+    <string name="facebook_app_id" translatable="false">2239292903037835</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2239292903037835</string>
+
+    <string name="drawer_open">Open nav drawer</string>
+    <string name="drawer_close">Close nav drawer</string>
+    <string name="invalidOtp">Please enter a valid OTP</string>
+
+    <string name="app_name">Aaj Kaaj</string>
+    <string name="instagram">Instagram</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
+    <string name="account_">You need to enable account permission to continue</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="camera">For using camera, you need to enable camera and storage permission.</string>
+    <string name="location">For using application, you need to enable location permission.</string>
+    <string name="okay">Okay</string>
+    <string name="SERVER_ERROR_MSG">Server isn\'t responding. Please try after some time.</string>
+    <string name="SOMETHING_WENT_WRONG">Something went wrong. Please try after some time.</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="fitness_details_and_goals"><![CDATA[Fitness Details & Goals]]></string>
+    <string name="empty_weight">Please enter weight</string>
+    <string name="empty_height">Please enter height</string>
+    <string name="empty_personal_goal">Please select personal goals</string>
+    <string name="unable_to_set_push_token">Unable to set push notification token. Please retry.</string>
+    <string name="proceed">Proceed</string>
+    <string name="exit">Exit</string>
+    <string name="empty_house_number">Please enter house number</string>
+    <string name="empty_street_address">Please enter street address</string>
+    <string name="empty_city">Please enter city</string>
+    <string name="empty_state">Please enter state</string>
+    <string name="empty_zip_code">Please enter postcode</string>
+    <string name="unable_to_get_location">Unable to get your current location please try again by turing on your location</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="empty_first_name">Please enter first name</string>
+    <string name="empty_last_name">Please enter last name</string>
+    <string name="empty_email">Please enter email</string>
+    <string name="empty_note">Please type some note</string>
+    <string name="invalid_email">Please enter valid email address</string>
+    <string name="empty_password">Please enter password</string>
+    <string name="invalid_password">Password must be at least 6 characters long</string>
+    <string name="empty_gender">Please select gender</string>
+    <string name="crop_image">Crop Image</string>
+    <string name="cropping_image">Cropping Image…</string>
+    <string name="ok">OK</string>
+    <string name="location_permission_error">Location permission not granted</string>
+    <string name="enable_gps">Please enable GPS to continue.</string>
+    <string name="bo_location_available">No location available</string>
+    <string name="login">Log In</string>
+    <string name="fitness_goals">Fitness Goals</string>
+    <string name="core_skills">Core Skills</string>
+    <string name="locations">Locations</string>
+    <string name="empty_core_skills">Please select core skills</string>
+    <string name="empty_price">Please enter some price</string>
+    <string name="invalid_price">Price should be greater than 0</string>
+    <string name="empty_location">Please select location</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_id">Email ID</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="certification_achieved">Certification Achieved</string>
+    <string name="about_me">About Me</string>
+    <string name="price_per_hour">Price per hour(£)</string>
+    <string name="location_text">Locations</string>
+    <string name="weight_kgs">Weight (kgs)</string>
+    <string name="height_inches">Height (inches)</string>
+    <string name="personal_goal_s">Personal Goal(s)</string>
+    <string name="gender_">Gender:</string>
+    <string name="profile_settings">Profile Settings</string>
+    <string name="private_">Private</string>
+    <string name="public_">Public</string>
+    <string name="are_you_a_professional_in_a_sport">Are you a professional in a sport</string>
+    <string name="frequency_of_exercise_per_week">Frequency of exercise per week</string>
+    <string name="empty_frequency">Please select frequency</string>
+    <string name="submit">Submit</string>
+    <string name="house_number">House Number</string>
+    <string name="street_address">Street Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="postcode_zipcode">Postcode</string>
+    <string name="next">Next</string>
+    <string name="log_in">Log In</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or_connect_with">Or Connect With</string>
+    <string name="no_data_available">No data available</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="forgot_password_text">Forgot Password</string>
+    <string name="back">Back</string>
+    <string name="take_photo">Take photo</string>
+    <string name="select_from_gallery">Select from gallery</string>
+    <string name="remove_photo">Remove photo</string>
+    <string name="i_want_personal_trainer">Find My Service Provider</string>
+    <string name="i_am_personal_trainer">I\'m a Service Provider</string>
+    <string name="logout">Logout</string>
+    <string name="select_one_or_more_options">Select one or more options</string>
+    <string name="weight">Weight</string>
+    <string name="height_feet_and_inches">Height (feet and inches)</string>
+    <string name="feet">feet</string>
+    <string name="inches">inches</string>
+    <string name="kgs">kgs</string>
+    <string name="phone">Phone</string>
+    <string name="empty_phone">Please enter phone</string>
+    <string name="invalid_inches">Inches value must be less than 12</string>
+    <string name="manage_packages">Manage packages</string>
+    <string name="retry">Retry</string>
+    <string name="no_packages_created">No packages created. Click + to create new package</string>
+    <string name="no_card_created">No card added. Click + to add new card</string>
+    <string name="no_card_created_">No card added. Please add a card to proceed.</string>
+    <string name="no_packages_available">No packages available.</string>
+    <string name="pound_sign">£</string>
+    <string name="sessions">Sessions</string>
+    <string name="sessions_all">All Sessions</string>
+    <string name="delete_package">Are you sure you want to delete this package?</string>
+    <string name="delete_card">Are you sure you want to delete this card?</string>
+    <string name="cancel_session_confirmation">Are you sure you want to cancel this session?</string>
+    <string name="add_package">Add Package</string>
+    <string name="add_session">Add Session</string>
+    <string name="done">Done</string>
+    <string name="create_package">Create Package</string>
+    <string name="no_of_sessions">No of sessions</string>
+    <string name="sessions_duration">Sessions Duration</string>
+    <string name="description">Description</string>
+    <string name="session_duration">Session Duration</string>
+    <string name="price_per_session">Price per session</string>
+    <string name="total">Total</string>
+    <string name="price">Price (£)</string>
+    <string name="package_title">Package Title</string>
+    <string name="empty_package_title">Please enter package title</string>
+    <string name="empty_no_of_sessions">Please enter no of sessions</string>
+    <string name="invalid_no_of_session">No of sessions can not be 0</string>
+    <string name="duration">Please select duration</string>
+    <string name="empty_description">Please enter description</string>
+    <string name="invalid_session_duration">Session duration can not be 0</string>
+    <string name="session_duration_1Hour">Session duration can not be less than 1 Hour</string>
+    <string name="edit_package">Edit Package</string>
+    <string name="edit_session">Edit Session</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="profile">Profile</string>
+    <string name="personal_trainer">Personal Trainer</string>
+    <string name="experience">Experience</string>
+    <string name="price_range">Price Range</string>
+    <string name="per_hour">per hour</string>
+    <string name="specialities">Specialities</string>
+    <string name="about">About</string>
+    <string name="hours_of_operation">Hours of Operation</string>
+    <string name="notification">Allow notification</string>
+    <string name="notification_text">Allow notification a day before session booking</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="edit">Edit</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_hours_of_operation">Change Hours of Operation</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="unconfirmer_password">Password does not confirm</string>
+    <string name="empty_old_password">Please enter old password</string>
+    <string name="empty_new_password">Please enter new password</string>
+    <string name="password_changed">Password changed successfully</string>
+    <string name="profile_pic_changed_successfully">Profile pic changed successfully</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="not_available">N/A</string>
+    <string name="invalid_package_duration">Duration can not be more than 24 Hours</string>
+    <string name="set_availability">Set Availability</string>
+    <string name="from_time_more_than_to_time">From time can not be  more than To time.</string>
+    <string name="empty_from_time">Please select From time for</string>
+    <string name="empty_to_time">Please select To time for</string>
+    <string name="availability_set">Availability set successfully</string>
+    <string name="no_availability_available">No availability available</string>
+    <string name="edit_fitness_details_goals"><![CDATA[Edit Fitness Details & Goals]]></string>
+    <string name="edit_address_details">Edit Address Details</string>
+    <string name="fitness_details">Fitness Details</string>
+    <string name="height">Height</string>
+    <string name="professional_in_sports">Professional in sports</string>
+    <string name="find_new_trainer">Find New Trainer</string>
+    <string name="choose_location">Choose Location</string>
+    <string name="find_trainer">Find A Personal Trainer</string>
+    <string name="personal_trainers">Personal Trainers</string>
+    <string name="availability_not_set_large_text">You have not set your availability. Click Set Now if you want to set your availability now, click Not Now to dismiss.</string>
+    <string name="set_now">Set Now</string>
+    <string name="not_now">Not Now</string>
+    <string name="budget">Budget</string>
+    <string name="per_hour_">(per hour)</string>
+    <string name="_10">£10</string>
+    <string name="_100">£100</string>
+    <string name="view_details">VIEW DETAILS</string>
+    <string name="book_now">BOOK NOW</string>
+    <string name="save">Save</string>
+    <string name="select_here">Select here</string>
+    <string name="select_here_country">Select country here</string>
+    <string name="town">Town</string>
+    <string name="empty_town">Please enter town</string>
+    <string name="empty_country">Please select country</string>
+    <string name="select_from_time_first">Please select From time first.</string>
+    <string name="see_all_reviews">See all reviews</string>
+    <string name="all_reviews">All reviews</string>
+    <string name="packages_s">\'s Packages</string>
+    <string name="per_session">per session</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time_slot">Select Time Slot</string>
+    <string name="trainer_not_available_on_day">is not available on</string>
+    <string name="booked">Booked</string>
+    <string name="by">By:</string>
+    <string name="booking_created">You can check the booking status and complete your booking once trainer has accepted your request from the sessions tab.</string>
+    <string name="clients">Clients</string>
+    <string name="new_requests">New Requests</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="reject_request">Are you sure you want to reject this request?</string>
+    <string name="client_">Client:</string>
+    <string name="no_request_found">No new request found!</string>
+    <string name="pending">Pending</string>
+    <string name="accepted">Accepted</string>
+    <string name="completed">Completed</string>
+    <string name="declined">Declined</string>
+    <string name="no_sessions">No sessions available!</string>
+    <string name="session_name">Session Name</string>
+    <string name="trainer_name">Trainer Name</string>
+    <string name="proceed_with_payment">Proceed with payment</string>
+    <string name="cancel_session">Cancel Session</string>
+    <string name="payment">Payments</string>
+    <string name="payment_">Payment</string>
+    <string name="pay">Pay</string>
+    <string name="subscriptions">Subscription</string>
+    <string name="card">Saved Cards</string>
+    <string name="hour">Hour</string>
+    <string name="minute">Minute</string>
+    <string name="select_duration">Select Duration</string>
+    <string name="cancel">Cancel</string>
+    <string name="messages">Messages</string>
+    <string name="type_a_message">Type a Message</string>
+    <string name="delete_messages">Delete Messages</string>
+    <string name="block_user">Block User</string>
+    <string name="unblock_user">Unblock User</string>
+    <string name="anyone_of_you_has_blocked_the_other_one">Anyone of you has blocked the other one.</string>
+    <string name="delete_messages_confirmation">Are you sure you want to delete all messages?</string>
+    <string name="no_chat">No chats available</string>
+    <string name="no_chats">No chats available!</string>
+    <string name="send_message">Send Message</string>
+    <string name="add_card_">Add Card</string>
+    <string name="select_card_to_proceed">Select card to proceed</string>
+    <string name="no_slot_available">No time slot available</string>
+    <string name="pay_large_text">You need to pay above amount to enjoy our services for one month. Without paying this amount your profile will not be visible to the clients.</string>
+    <string name="per_month">/ month</string>
+    <string name="subscription_text">Plan subscribed successfully</string>
+    <string name="upcoming_sessions">Upcoming Sessions</string>
+    <string name="booked_sessions_for_future">Booked Sessions For Future</string>
+    <string name="completed_sessions">Completed Sessions</string>
+    <string name="completed_sessions_till_now">Completed Sessions Till Now</string>
+    <string name="no_upcoming_session">No Upcoming Session</string>
+    <string name="next_scheduled_session">Next Scheduled Session</string>
+    <string name="booked_sessions">Upcoming Sessions</string>
+    <string name="earnings">Earnings</string>
+    <string name="provide_rating">Provide Rating</string>
+    <string name="notes">Notes</string>
+    <string name="rate_trainer_now">Rate Trainer</string>
+    <string name="empty_rating">Please provide rating</string>
+    <string name="rating">Rating</string>
+    <string name="reviews">Reviews</string>
+    <string name="no_review">No reviews available</string>
+    <string name="client_name">Client Name</string>
+    <string name="start">Start</string>
+    <string name="totalEarning">Total Earnings</string>
+    <string name="yearly">Yearly</string>
+    <string name="monthly">Monthly</string>
+    <string name="weekly">Weekly</string>
+    <string name="notification_setting_changes">Notification setting is changed</string>
+
+    <string name="addYourIdProof">Add your ID proof</string>
+    <string name="yourIdProof">Your Id Proof</string>
+    <string name="idProofNotAdded">Please add your Id proof</string>
+    <string name="approvalPending">Your account is not approved yet , it need to be approved by admin for security purposes</string>
+    <string-array name="frequency_in_week">
+        <item>Select here</item>
+        <item>7 Days</item>
+        <item>6 Days</item>
+        <item>5 Days</item>
+        <item>4 Days</item>
+        <item>3 Days</item>
+        <item>2 Days</item>
+        <item>1 Day</item>
+    </string-array>
+
+    <string-array name="experience">
+        <item>Select here</item>
+        <item>0–2 years</item>
+        <item>2–4 years</item>
+        <item>4–6 years</item>
+        <item>6–8 years</item>
+        <item>8–10 years</item>
+        <item>10+ years</item>
+    </string-array>
+
+    <string-array name="feet">
+        <item>Select here</item>
+        <item>4 feet</item>
+        <item>5 feet</item>
+        <item>6 feet</item>
+        <item>7 feet</item>
+    </string-array>
+    <string-array name="categories">
+        <item>Select category</item>
+        <item>Driver</item>
+        <item>Delivery boy</item>
+        <item>Maid</item>
+        <item>Labour</item>
+        <item>Chef</item>
+        <item>Cook</item>
+        <item>Hair Stylist</item>
+        <item>Electrician</item>
+    </string-array>
+
+
+    <string-array name="job_categories">
+        <item>Driver</item>
+        <item>Delivery boy</item>
+        <item>Maid</item>
+        <item>Labour</item>
+        <item>Chef</item>
+        <item>Cook</item>
+        <item>Hair Stylist</item>
+        <item>Electrician</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
