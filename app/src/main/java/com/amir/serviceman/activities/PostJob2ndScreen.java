@@ -32,7 +32,6 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_post_job2nd_screen);
-
         Common.setToolbarWithBackAndTitle(mContext,"Create a job",true,R.drawable.ic_arrow_back_black_24dp);
         implementListener();
         setDayAdapter();
