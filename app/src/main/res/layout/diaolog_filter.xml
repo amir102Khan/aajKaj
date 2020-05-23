@@ -34,28 +34,57 @@
 
 
 
+    <TextView
+        android:id="@+id/tvCtg"
+        android:text="Select category"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@id/layoutHead"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <Spinner
+
         android:padding="@dimen/_5sdp"
-        android:entries="@array/categories"
         android:id="@+id/spnCategory"
         android:layout_margin="@dimen/_15sdp"
-        android:layout_below="@id/layoutHead"
+        android:layout_below="@id/tvCtg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:textSize="@dimen/_15sdp"
-        android:paddingStart="@dimen/_20sdp"
-        android:textAllCaps="false"
-        android:paddingEnd="@dimen/_20sdp"
-        android:textColor="@color/white"
-        android:text="Apply"
-        android:id="@+id/btnApply"
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:layout_below="@id/spnCategory"
+        android:layout_width="wrap_content"
         android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/spnCategory"
-        android:background="@drawable/edittextbackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:textSize="@dimen/_15sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:textAllCaps="false"
+            android:paddingEnd="@dimen/_20sdp"
+            android:textColor="@color/black"
+            android:text="Reset"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:id="@+id/btnReset"
+            android:background="@drawable/edittextbackgroundcorner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:textSize="@dimen/_15sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:textAllCaps="false"
+            android:paddingEnd="@dimen/_20sdp"
+            android:textColor="@color/white"
+            android:text="Apply"
+            android:id="@+id/btnApply"
+            android:background="@drawable/edittextbackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </RelativeLayout>

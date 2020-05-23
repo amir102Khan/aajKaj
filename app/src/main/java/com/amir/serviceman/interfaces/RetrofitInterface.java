@@ -89,6 +89,6 @@ public interface RetrofitInterface {
     @POST("user/contractorlist")
     Call<ResponseBody> getJobProviders(@Header("Authorization")String authHeader,
                                          @Field("search") String search,
-                                       @Field("filter_category") int filterCat );
+                                       @Field("filter_category") Integer filterCat );
 
 }
