@@ -15,6 +15,8 @@ import com.amir.serviceman.databinding.ActivityDashboardBinding;
 import com.amir.serviceman.fragments.Profile;
 import com.amir.serviceman.fragments.customer.MyJob;
 import com.amir.serviceman.fragments.customer.SerachProviders;
+import com.amir.serviceman.fragments.provider.MyBid;
+import com.amir.serviceman.fragments.provider.SearchJob;
 import com.google.android.material.tabs.TabLayout;
 
 public class Dashboard extends BaseActivity {
@@ -24,17 +26,30 @@ public class Dashboard extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_dashboard);
-        setUpTab();
-        setTabSelectedListner();
-        switchToFragment(new MyJob());
+        if (sp.getString(USER_TYPE).equals(PROVIDER)){
+            setUpContractorTab();
+            switchToFragment(new SearchJob());
 
+        }else {
+            setUpCustomerTab();
+            switchToFragment(new MyJob());
+        }
+        setUpContractorTab();
+        setTabSelectedListner();
     }
 
 
-    private void setUpTab() {
+    private void setUpCustomerTab() {
         setCustomTabView("My Jobs", R.drawable.my_job_selector);
         setCustomTabView("Search", R.drawable.search_selector);
         setCustomTabView("Profile", R.drawable.profile_selector);
+    }
+
+    private void setUpContractorTab(){
+        setCustomTabView("Search Jobs", R.drawable.search_selector);
+        setCustomTabView("My bids",R.drawable.my_job_selector);
+        setCustomTabView("Profile", R.drawable.profile_selector);
+
     }
 
     private void setCustomTabView(String text, int icon) {
@@ -58,17 +73,33 @@ public class Dashboard extends BaseActivity {
         binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()){
-                    case 0 :
-                        switchToFragment(new MyJob());
-                        break;
-                    case 1:
-                        switchToFragment(new SerachProviders());
-                        break;
-                    case 2:
-                        switchToFragment(new Profile());
-                        break;
+                if (sp.getString(USER_TYPE).equals(PROVIDER)){
+                    switch (tab.getPosition()){
+                        case 0 :
+                            switchToFragment(new SearchJob());
+                            break;
+                        case 1:
+                            switchToFragment(new MyBid());
+                            break;
+                        case 2:
+                            switchToFragment(new Profile());
+                            break;
+                    }
                 }
+                else {
+                    switch (tab.getPosition()){
+                        case 0 :
+                            switchToFragment(new MyJob());
+                            break;
+                        case 1:
+                            switchToFragment(new SerachProviders());
+                            break;
+                        case 2:
+                            switchToFragment(new Profile());
+                            break;
+                    }
+                }
+
             }
 
             @Override
