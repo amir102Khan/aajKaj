@@ -3,9 +3,10 @@ package com.amir.serviceman.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GetJobProviders {
+public class GetJobProviders implements Serializable {
     @SerializedName("type")
     @Expose
     private String type;
@@ -40,7 +41,7 @@ public class GetJobProviders {
         this.data = data;
     }
 
-    public class Datum {
+    public class Datum implements Serializable {
 
         @SerializedName("id")
         @Expose
