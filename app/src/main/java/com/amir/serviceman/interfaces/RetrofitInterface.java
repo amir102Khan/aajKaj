@@ -91,4 +91,15 @@ public interface RetrofitInterface {
                                          @Field("search") String search,
                                        @Field("filter_category") Integer filterCat );
 
+    @FormUrlEncoded
+    @POST("project/createproject")
+    Call<ResponseBody> createJob(@Header("Authorization")String authHeader,
+                                       @Field("business_type") String search,
+                                       @Field("job_type") String jobtype ,
+                                       @Field("employee_type") String employee_type ,
+                                       @Field("location") String location ,
+                                       @Field("lat") String lat,
+                                       @Field("lng") String  lng);
+
+
 }
