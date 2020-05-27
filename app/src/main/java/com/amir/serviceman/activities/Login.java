@@ -87,6 +87,7 @@ public class Login extends BaseActivity implements View.OnClickListener {
             } else {
                 startActivity(new Intent(mContext, PhoneVerification.class)
                         .putExtra("phone", phone)
+                        .putExtra("type",getIntent().getStringExtra("type"))
                         .putExtra(IS_REGISTER, false));
             }
         }
