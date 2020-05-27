@@ -1,15 +1,20 @@
 package com.amir.serviceman.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.amir.serviceman.Model.CreateJobModel;
 import com.amir.serviceman.Model.DayModel;
 import com.amir.serviceman.R;
 import com.amir.serviceman.adapter.DayAdapter;
@@ -18,21 +23,31 @@ import com.amir.serviceman.databinding.ActivityPostJob2ndScreenBinding;
 import com.amir.serviceman.interfaces.OnAdapterItemClick;
 import com.amir.serviceman.util.Common;
 import com.amir.serviceman.util.Dialogs;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class PostJob2ndScreen extends BaseActivity implements View.OnClickListener, OnAdapterItemClick {
 
     private ActivityPostJob2ndScreenBinding binding;
     private DayAdapter dayAdapter;
     private ArrayList<DayModel> dayModels = new ArrayList<>();
+    private ArrayList<String> days = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_post_job2nd_screen);
         Common.setToolbarWithBackAndTitle(mContext,"Create a job",true,R.drawable.ic_arrow_back_black_24dp);
+        loader = loader = (ConstraintLayout) binding.loader.getRoot();
         implementListener();
         setDayAdapter();
     }
@@ -57,6 +72,29 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
     private void implementListener(){
         binding.tvFrom.setOnClickListener(this);
         binding.tvTo.setOnClickListener(this);
+        binding.btnPostJob.setOnClickListener(this);
+    }
+
+    private  void getValFromPost1(){
+        String lat = getIntent().getStringExtra("lat");
+        String lng = getIntent().getStringExtra("lng");
+        String address= getIntent().getStringExtra("contrAddress");
+        String jType =  getIntent().getStringExtra("jobType");
+        String empType = getIntent().getStringExtra("empType");
+        String bType = getIntent().getStringExtra("businessType");
+        String projectName = getIntent().getStringExtra("projectName");
+        String startWork = binding.tvFrom.getText().toString();
+        String endWork = binding.tvTo.getText().toString();
+        String salaryHr = binding.edHourly.getText().toString();
+        String salaryMonth = binding.edMonthly.getText().toString();
+        String val = " ";
+        if (binding.switchImmediatelyStart.isChecked()){
+             val = String.valueOf(true);
+        }else{
+            val = String.valueOf(false);
+        }
+    createJobForContractor(projectName,bType,jType,empType,address,lat,lng,startWork,endWork,salaryHr,salaryMonth,val,days);
+
     }
 
     @Override
@@ -66,6 +104,9 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
        }
        else if (v == binding.tvTo){
            openTimePicker(false);
+       }
+       else if (v == binding.btnPostJob){
+           getValFromPost1();
        }
     }
 
@@ -124,8 +165,60 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         }
         else {
             dayModels.get(position).setSelected(true);
+            String selcDay= dayModels.get(position).getDayName();
+            days.add(selcDay);
         }
 
         dayAdapter.notifyDataSetChanged();
     }
+
+
+     private void createJobForContractor(String name,String bt,String jt,String et,
+                                         String loc, String lat,
+                                         String lng,String from,String to,
+                                         String hrSal,String monthSal,
+                                         String immi_start,ArrayList<String> days ) {
+     String apiTOken;
+     if (sp.getBoolean(SIGNUP)) {
+     apiTOken = getUserModelFromSharedPreference(sp).getApiToken();
+     } else {
+     apiTOken = getLoginUserModelFromSharedPreference(sp).getApiToken();
+     }
+     showLoader();
+     call = api.createJob(apiTOken,name,bt,jt,et,loc,lat,lng,from,to,hrSal,monthSal,immi_start,days);
+     call.enqueue(new Callback<ResponseBody>() {
+    @Override
+    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+    try {
+    Type type = new TypeToken<CreateJobModel>() {
+    }.getType();
+    if (response.code() == 200) {
+    CreateJobModel data = gson.fromJson(response.body().string(), type);
+    if (data.getType().equals("success")) {
+        startActivity(new Intent(mContext,Dashboard.class));
+        Toast.makeText(mContext, "successfully submitted", Toast.LENGTH_SHORT).show();
+    mContext.finish();
+    } else {
+    Dialogs.alertDialog(data.getMessage(), mContext);
+
+    }
+    } else {
+    Dialogs.alertDialog(getString(R.string.SERVER_ERROR_MSG), mContext);
+    }
+    } catch (Exception ex) {
+    Dialogs.alertDialog(ex.getMessage(), mContext);
+        Log.d("just",ex.getMessage());
+
+    }
+    hideLoader();
+    }
+
+    @Override
+    public void onFailure(Call<ResponseBody> call, Throwable t) {
+    hideLoader();
+    Dialogs.alertDialog(t.getMessage(), mContext);
+    Log.d("just1",t.getMessage());
+    }
+    });
+     }
 }

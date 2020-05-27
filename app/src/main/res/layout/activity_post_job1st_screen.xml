@@ -21,9 +21,30 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tvProjectName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Project Name"
+                    android:textColor="@color/taxyYellow"
+                    android:textSize="@dimen/_15sdp" />
+                <EditText
+                    android:id="@+id/ed_project_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvProjectName"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/ic_background"
+                    android:padding="@dimen/_12sdp"
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/tvBType"
+                    android:layout_below="@+id/ed_project_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_15sdp"

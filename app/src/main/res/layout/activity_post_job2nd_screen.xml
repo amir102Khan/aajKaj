@@ -121,18 +121,6 @@
                 android:textSize="@dimen/_15sdp" />
 
 
-            <TextView
-                android:id="@+id/tvHourly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:text="Hourly(Rs)"
-                android:layout_toEndOf="@id/tvSalary"
-                android:layout_below="@id/switchImmediatelyStart"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-
             <EditText
                 android:gravity="center"
                 android:id="@+id/edHourly"
@@ -183,6 +171,17 @@
                 android:layout_height="wrap_content"/>
 
 
+            <TextView
+                android:id="@+id/tvHourly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switchImmediatelyStart"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_toEndOf="@id/tvSalary"
+                android:text="Hourly(Rs)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:id="@+id/tvPhoto"
@@ -209,7 +208,7 @@
 
             <Button
                 android:layout_below="@id/imgProduct"
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnPostJob"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="Post job"
                 android:textAllCaps="false"

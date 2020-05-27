@@ -1,5 +1,8 @@
 package com.amir.serviceman.interfaces;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -94,12 +97,19 @@ public interface RetrofitInterface {
     @FormUrlEncoded
     @POST("project/createproject")
     Call<ResponseBody> createJob(@Header("Authorization")String authHeader,
-                                       @Field("business_type") String search,
-                                       @Field("job_type") String jobtype ,
-                                       @Field("employee_type") String employee_type ,
-                                       @Field("location") String location ,
-                                       @Field("lat") String lat,
-                                       @Field("lng") String  lng);
+                                 @Field("project_name") String projectName,
+                                 @Field("business_type") String btype,
+                                 @Field("job_type") String jobtype ,
+                                 @Field("employee_type") String employee_type ,
+                                 @Field("location") String location ,
+                                 @Field("lat") String lat,
+                                 @Field("lng") String  lng,
+                                 @Field("work_start_time") String  sTime,
+                                 @Field("work_end_time") String  eTime,
+                                 @Field("salary_hourly") String  hrSal,
+                                 @Field("salary_monthly") String  monthSal,
+                                 @Field("immediate_start") String  immi_start,
+                                 @Field("days[]") ArrayList<String> days );
 
 
 }

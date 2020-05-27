@@ -35,15 +35,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PostJob1stScreen extends BaseActivity implements View.OnClickListener {
-    private String latitude = "",longitude = "",comAddress = "";
+    private String latitude = "",longitude = "",conAddress = "";
     private ActivityPostJob1stScreenBinding binding;
     private RadioButtonAdapter adapter;
     private ArrayList<String> radios = new ArrayList<>();
-    private String selecBType,selecJType,selecEmpType;
+    private String selecBType,selecJType,selecEmpType,projectName;
 
 
     private boolean isChecking = true;
     private int mCheckedId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,17 +58,27 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
     }
 
     private void implementListener() {
+
         binding.btnNext.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (v == binding.btnNext) {
-          createJobForContractor();
+            startActivity(new Intent(mContext, PostJob2ndScreen.class)
+                    .putExtra("projectName", projectName)
+            .putExtra("businessType",selecBType)
+            .putExtra("jobType",selecJType)
+            .putExtra("EmpType",selecEmpType)
+            .putExtra("contrAddress",conAddress)
+            .putExtra("lat",latitude)
+            .putExtra("lng",longitude));
+          //createJobForContractor();
         }
     }
 
     private void clickRadioBtnToGetVal(){
+        projectName = binding.edProjectName.getText().toString();
         // business type radio buttons
         binding.rdBTypeGrp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -124,7 +135,7 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
                 Log.e("location: ", lat + " : " + lng + " : " + address);
                 latitude = lat;
                 longitude = lng;
-                comAddress = address;
+                conAddress = address;
                 binding.edLocation.setText(address);
             }
         });
@@ -132,47 +143,5 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
         locationHelper.getLocation();
     }
 
-    private void createJobForContractor() {
-        String apiTOken;
-        if (sp.getBoolean(SIGNUP)) {
-            apiTOken = getUserModelFromSharedPreference(sp).getApiToken();
-        } else {
-            apiTOken = getLoginUserModelFromSharedPreference(sp).getApiToken();
-        }
-        showLoader();
-        call = api.createJob(apiTOken,selecBType,selecJType,selecEmpType,comAddress,latitude,longitude);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    Type type = new TypeToken<CreateJobModel>() {
-                    }.getType();
-                    if (response.code() == 200) {
-                        CreateJobModel data = gson.fromJson(response.body().string(), type);
-                        if (data.getType().equals("success")) {
-                            startActivity(new Intent(mContext, PostJob2ndScreen.class));
-                            Toast.makeText(mContext, "successfully submitted", Toast.LENGTH_SHORT).show();
-                            mContext.finish();
-                        } else {
-                            Dialogs.alertDialog(data.getMessage(), mContext);
 
-                        }
-                    } else {
-                        Dialogs.alertDialog(getString(R.string.SERVER_ERROR_MSG), mContext);
-                    }
-                } catch (Exception ex) {
-                    Dialogs.alertDialog(ex.getMessage(), mContext);
-
-                }
-                hideLoader();
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                hideLoader();
-                Dialogs.alertDialog(t.getMessage(), mContext);
-                Log.d("just1",t.getMessage());
-            }
-        });
-    }
 }

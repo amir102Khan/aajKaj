@@ -17,9 +17,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.PhoneVerification"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.ProjectDetails"></activity>
+        <activity android:name=".activities.PhoneVerification" />
         <activity android:name=".activities.PostJob2ndScreen" />
         <activity android:name=".activities.PostJob1stScreen" />
         <activity android:name=".activities.WelcomeScreen" />

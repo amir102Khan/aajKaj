@@ -335,6 +335,31 @@
         <item>Electrician</item>
     </string-array>
 
+
+    <string-array name="id_proof_type">
+        <item>Driving Licence</item>
+        <item>Voter Id</item>
+        <item>Aadhar Card</item>
+    </string-array>
+
+    <string-array name="experience_in_years">
+        <item>0</item>
+        <item>1 yr</item>
+        <item>2 yr</item>
+        <item>3 yr</item>
+        <item>4 yr</item>
+        <item>5 yr</item>
+        <item>6 yr</item>
+        <item>7 yr</item>
+        <item>8 yr</item>
+        <item>9 yr</item>
+        <item>10 yr</item>
+        <item>11 yr</item>
+        <item>12 yr</item>
+        <item>13 yr</item>
+
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

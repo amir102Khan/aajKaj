@@ -26,11 +26,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/profile_bg2">
+        android:background="@drawable/bg_profile">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:paddingBottom="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_20sdp"
@@ -56,6 +57,15 @@
                 android:textSize="@dimen/_16sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+            <RatingBar
+                android:id="@+id/MyRating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:layout_gravity="center_horizontal"
+                android:numStars="5"
+                android:stepSize="0.1" />
             <TextView
                 android:id="@+id/tvProfilePhoneNum"
                 android:textColor="@color/black"
@@ -179,7 +189,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <androidx.appcompat.widget.AppCompatTextView
@@ -194,6 +204,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:id="@+id/spinrIdProof"/>
+
                 </LinearLayout>
 
                 <ImageView
@@ -209,6 +220,30 @@
 
 
             </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/dotted_background"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp">
+            <Switch
+                android:textSize="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:id="@+id/switchWorkStatus"
+                android:padding="@dimen/_5sdp"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:text="Work Status"
+                android:textColor="@color/grreen"
+                android:theme="@style/SCBSwitchStatus" />
 
         </LinearLayout>
 
