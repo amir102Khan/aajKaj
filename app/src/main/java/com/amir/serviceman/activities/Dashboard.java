@@ -34,7 +34,6 @@ public class Dashboard extends BaseActivity {
             setUpCustomerTab();
             switchToFragment(new MyJob());
         }
-        setUpContractorTab();
         setTabSelectedListner();
     }
 
