@@ -1,6 +1,7 @@
 package com.amir.serviceman.fragments.provider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,15 +16,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.amir.serviceman.R;
+import com.amir.serviceman.activities.ProjectDetails;
 import com.amir.serviceman.adapter.JobListForContractor;
 import com.amir.serviceman.adapter.JobProviderAdapter;
 import com.amir.serviceman.core.BaseFragment;
 import com.amir.serviceman.databinding.FragmentSearchJobBinding;
+import com.amir.serviceman.interfaces.OnAdapterItemClick;
 
 import java.util.ArrayList;
 
 
-public class   SearchJob extends BaseFragment {
+public class   SearchJob extends BaseFragment implements OnAdapterItemClick {
     private FragmentSearchJobBinding binding;
     private JobListForContractor adapter;
 
@@ -49,9 +52,13 @@ public class   SearchJob extends BaseFragment {
     }
 
     private void setEmptyAdapter() {
-
-        adapter = new JobListForContractor( getActivity());
+        adapter = new JobListForContractor( getActivity(),this);
         binding.rvJobList.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.rvJobList.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(int position, boolean data) {
+       startActivity(new Intent(getActivity(), ProjectDetails.class));
     }
 }

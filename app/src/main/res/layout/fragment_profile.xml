@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:paddingBottom="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_20sdp"
@@ -128,7 +128,7 @@
                     android:text="Address"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:textSize="@dimen/_10sdp"/>
+                    android:textSize="@dimen/_12sdp"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,12 +147,23 @@
                     android:text="Experience"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:textSize="@dimen/_10sdp"/>
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:id="@+id/spinrExpPro"/>
+                    android:textSize="@dimen/_12sdp"/>
+                    <RelativeLayout
+                        android:id="@+id/expLayout"
+                        android:background="@drawable/ic_background"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/spinrExpPro"
+                            android:padding="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -161,7 +172,7 @@
                     android:text="Select Languages"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:textSize="@dimen/_10sdp"/>
+                    android:textSize="@dimen/_12sdp"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -198,21 +209,32 @@
                         android:text="Select Id proof"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:textSize="@dimen/_10sdp"/>
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:id="@+id/spinrIdProof"/>
+                        android:textSize="@dimen/_12sdp"/>
+                    <RelativeLayout
+                        android:id="@+id/idLayout"
+                        android:background="@drawable/ic_background"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/spinrIdProof"
+                            android:padding="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imgId"
                     android:background="@drawable/dotted_background"
-                    android:padding="@dimen/_10sdp"
                     app:srcCompat="@drawable/ic_add"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:layout_width="match_parent"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
@@ -235,16 +257,17 @@
             android:layout_marginEnd="@dimen/_20sdp">
             <Switch
                 android:textSize="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_1sdp"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
                 android:id="@+id/switchWorkStatus"
-                android:padding="@dimen/_5sdp"
-                android:layout_width="@dimen/_120sdp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Work Status"
-                android:textColor="@color/grreen"
-                android:theme="@style/SCBSwitchStatus" />
-
+                android:layout_gravity="center_vertical"
+                android:layout_below="@id/rvDay"
+                android:gravity="left|center"
+                android:text="Immediately start"
+                android:textColor="@color/taxyYellow"
+                android:theme="@style/SCBSwitch" />
         </LinearLayout>
 
         <Button

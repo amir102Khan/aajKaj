@@ -25,7 +25,9 @@
         <activity android:name=".activities.PostJob1stScreen" />
         <activity android:name=".activities.WelcomeScreen" />
         <activity android:name=".activities.Dashboard" />
-        <activity android:name=".activities.CustomerSignUp" />
+        <activity android:name=".activities.CustomerSignUp" >
+
+        </activity>
         <activity android:name=".activities.Login" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

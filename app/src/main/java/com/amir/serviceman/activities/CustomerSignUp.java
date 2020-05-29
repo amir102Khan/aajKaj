@@ -180,20 +180,19 @@ public class CustomerSignUp extends BaseActivity  implements View.OnClickListene
 
     private void checkPermission(){
         if (PermissionHelper.checkPermissionCG(mContext)){
-            dialogSelectImage();
+            EasyImage.openCamera(mContext, 0);
         }
         else {
             PermissionHelper.requestPermissionCG(mContext);
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == PERMISSION_REQUEST_CODE_CG) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                dialogSelectImage();
+                EasyImage.openCamera(mContext, 0);
             }
             else {
                 if (!ActivityCompat.shouldShowRequestPermissionRationale(mContext, Manifest.permission.CAMERA) ||
@@ -260,48 +259,46 @@ public class CustomerSignUp extends BaseActivity  implements View.OnClickListene
         }
     }
 
-    public void dialogSelectImage() {
-        final Dialog dialog = new Dialog(mContext);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (dialog.getWindow() != null)
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setContentView(R.layout.diaog_select_image);
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.show();
 
-        final TextView camera, gallery, tvRemovePhoto;
-        TextView tv_back;
-        camera = dialog.findViewById(R.id.tv_take_photo);
-        gallery = dialog.findViewById(R.id.tv_select_from_gallery);
-        tv_back = dialog.findViewById(R.id.tv_back);
 
-        camera.setOnClickListener(new View.OnClickListener() {
+    private void getCategories(){
+        showLoader();
+        call = api.getCategories();
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                //Toast.makeText(mContext, "123", Toast.LENGTH_SHORT).show();
-                // showToast("123");
-                EasyImage.openCamera(mContext, 0);
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Type type = new TypeToken<CategoriesModel>(){}.getType();
+                    if (response.code() == 200){
+                        CategoriesModel data = gson.fromJson(response.body().string(),type);
+                        if (data.getType().equals("success")){
+                            categories.clear();
+                            categories.addAll(data.getData());
+                            setAdapter();
+                        }
+                        else {
+                            Dialogs.alertDialog(data.getMessage(),mContext);
+                        }
+                    }
+                    else {
+                        Dialogs.alertDialog(getString(R.string.SERVER_ERROR_MSG),mContext);
+                    }
+                }
+                catch (Exception ex){
+                    Dialogs.alertDialog(ex.getMessage(),mContext);
+                }
+                hideLoader();
             }
-        });
 
-        gallery.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                EasyImage.openGallery(mContext, 0);
-            }
-        });
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                hideLoader();
+                Dialogs.alertDialog(t.getMessage(),mContext);
 
-
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
             }
         });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -345,45 +342,6 @@ public class CustomerSignUp extends BaseActivity  implements View.OnClickListene
         });
 
     }
-
-    private void getCategories(){
-        showLoader();
-        call = api.getCategories();
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    Type type = new TypeToken<CategoriesModel>(){}.getType();
-                    if (response.code() == 200){
-                        CategoriesModel data = gson.fromJson(response.body().string(),type);
-                        if (data.getType().equals("success")){
-                            categories.clear();
-                            categories.addAll(data.getData());
-                            setAdapter();
-                        }
-                        else {
-                            Dialogs.alertDialog(data.getMessage(),mContext);
-                        }
-                    }
-                    else {
-                        Dialogs.alertDialog(getString(R.string.SERVER_ERROR_MSG),mContext);
-                    }
-                }
-                catch (Exception ex){
-                    Dialogs.alertDialog(ex.getMessage(),mContext);
-                }
-                hideLoader();
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                hideLoader();
-                Dialogs.alertDialog(t.getMessage(),mContext);
-
-            }
-        });
-    }
-
     private void setAdapter(){
         ArrayList<String> ctg = new ArrayList<>();
         for (int i =0; i < categories.size() ; i++){

@@ -7,12 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.ProjectDetails"
-
         >
         <include layout="@layout/layout_toolbar"
-            android:id="@+id/lay_toolbar"/>
+            android:id="@+id/toolbar"/>
         <androidx.core.widget.NestedScrollView
-            android:layout_below="@id/lay_toolbar"
+            android:layout_below="@id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
@@ -192,6 +191,8 @@
                         android:layout_marginTop="10dp"
                         android:text="Apply"
                         android:textSize="15dp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:background="@drawable/background_white_rounded"/>

@@ -15,6 +15,7 @@ import com.amir.serviceman.databinding.ActivityDashboardBinding;
 import com.amir.serviceman.fragments.Profile;
 import com.amir.serviceman.fragments.customer.MyJob;
 import com.amir.serviceman.fragments.customer.SerachProviders;
+import com.amir.serviceman.fragments.provider.JobsCompleted;
 import com.amir.serviceman.fragments.provider.MyBid;
 import com.amir.serviceman.fragments.provider.SearchJob;
 import com.google.android.material.tabs.TabLayout;
@@ -47,6 +48,7 @@ public class Dashboard extends BaseActivity {
     private void setUpContractorTab(){
         setCustomTabView("Search Jobs", R.drawable.search_selector);
         setCustomTabView("My bids",R.drawable.my_job_selector);
+        setCustomTabView("Jobs Completed",R.drawable.my_job_selector);
         setCustomTabView("Profile", R.drawable.profile_selector);
 
     }
@@ -81,8 +83,12 @@ public class Dashboard extends BaseActivity {
                             switchToFragment(new MyBid());
                             break;
                         case 2:
+                            switchToFragment(new JobsCompleted());
+                            break;
+                        case 3:
                             switchToFragment(new Profile());
                             break;
+
                     }
                 }
                 else {
