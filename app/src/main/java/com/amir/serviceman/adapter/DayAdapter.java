@@ -53,7 +53,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.MyViewHolder>  {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onAdapterItemClick.onClick(position,daysList.get(position).isSelected());
+                onAdapterItemClick.onClick(position,daysList.get(position).isSelected(),1);
             }
         });
     }

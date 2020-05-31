@@ -159,7 +159,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    public void onClick(int position, boolean data) {
+    public void onClick(int position, boolean data,int type) {
         if (data){
             dayModels.get(position).setSelected(false);
         }

@@ -15,27 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amir.serviceman.R;
 import com.amir.serviceman.interfaces.OnAdapterItemClick;
 
-public class JobListForContractor extends RecyclerView.Adapter<JobListForContractor.JobListHolder> {
-
+public class UpcomingJobsAdapter extends RecyclerView.Adapter< UpcomingJobsAdapter.UpcomingJobHolder> {
 
     private Context context;
     private OnAdapterItemClick click;
 
-    public JobListForContractor(Context context, OnAdapterItemClick click) {
+    public  UpcomingJobsAdapter(Context context, OnAdapterItemClick click) {
         this.context = context;
         this.click = click;
     }
 
     @NonNull
     @Override
-    public JobListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.project_list_adapter,parent,false);
-        return new JobListHolder(view);
+    public UpcomingJobsAdapter.UpcomingJobHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.upcoming_jobs_adapter,parent,false);
+        return new UpcomingJobsAdapter.UpcomingJobHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final JobListHolder holder, final int position) {
-         
+    public void onBindViewHolder(@NonNull final UpcomingJobsAdapter.UpcomingJobHolder holder, final int position) {
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,19 +48,19 @@ public class JobListForContractor extends RecyclerView.Adapter<JobListForContrac
         return 8;
     }
 
-    class JobListHolder extends RecyclerView.ViewHolder {
+    class UpcomingJobHolder extends RecyclerView.ViewHolder {
         private ImageView imgProject;
         private RelativeLayout layout;
-        private TextView tvAddress;
-        private Button btnApply;
-        private TextView tvProjectName;
-        public JobListHolder(@NonNull View itemView) {
+        private TextView tvAddress,tvProjectName,contact,date;
+
+        public UpcomingJobHolder(@NonNull View itemView) {
             super(itemView);
-            imgProject = itemView.findViewById(R.id.projectImg);
-            tvProjectName = itemView.findViewById(R.id.tvRvProjectName);
-            btnApply = itemView.findViewById(R.id.btnApply);
-            tvAddress = itemView.findViewById(R.id.tvRvLocation);
+            imgProject = itemView.findViewById(R.id.projectImageUpcmng);
+            tvProjectName = itemView.findViewById(R.id.tvRvProjectNameUpcmg);
+            contact = itemView.findViewById(R.id.tvRvContactUpcmg);
+            tvAddress = itemView.findViewById(R.id.tvRvLocationUpcmg);
             layout = itemView.findViewById(R.id.layout_rv_list);
+            date = itemView.findViewById(R.id.tvRvDateUpcmg);
 
         }
     }

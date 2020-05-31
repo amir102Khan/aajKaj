@@ -305,7 +305,7 @@ public class SerachProviders extends BaseFragment implements View.OnClickListene
     }
 
     @Override
-    public void onClick(int position, boolean data) {
+    public void onClick(int position, boolean data,int type) {
 
     }
 

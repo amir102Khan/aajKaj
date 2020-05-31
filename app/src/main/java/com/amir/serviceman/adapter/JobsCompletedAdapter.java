@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,11 +38,10 @@ public class JobsCompletedAdapter extends RecyclerView.Adapter<JobsCompletedAdap
 
     @Override
     public void onBindViewHolder(@NonNull final JobsCompletedAdapter.JobHolder holder, final int position) {
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                click.onClick(position,true);
+                click.onClick(position,true,1);
             }
         });
     }
@@ -54,6 +54,7 @@ public class JobsCompletedAdapter extends RecyclerView.Adapter<JobsCompletedAdap
     class JobHolder extends RecyclerView.ViewHolder {
         private ImageView imgProject;
         private RelativeLayout layout;
+        private RatingBar ratingBar;
         private TextView tvAddress, date, tvProjectName,time;
 
 
@@ -63,7 +64,8 @@ public class JobsCompletedAdapter extends RecyclerView.Adapter<JobsCompletedAdap
             tvProjectName = itemView.findViewById(R.id.tvRvProjectNameJobCmplt);
             date = itemView.findViewById(R.id.tvTimeJobCmplt);
             tvAddress = itemView.findViewById(R.id.tvRvLocationJobCmplt);
-            date = itemView.findViewById(R.id.tvRvDatejobCmplt);
+            date = itemView.findViewById(R.id.tvRvDateJobCmplt);
+            ratingBar = itemView.findViewById(R.id.jobsRating);
 
         }
     }

@@ -58,7 +58,8 @@ public class   SearchJob extends BaseFragment implements OnAdapterItemClick {
     }
 
     @Override
-    public void onClick(int position, boolean data) {
-       startActivity(new Intent(getActivity(), ProjectDetails.class));
+    public void onClick(int position, boolean data,int type) {
+        if (type == 1){
+       startActivity(new Intent(getActivity(), ProjectDetails.class));}
     }
 }

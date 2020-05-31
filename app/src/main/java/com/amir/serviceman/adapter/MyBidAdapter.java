@@ -38,7 +38,7 @@ public class MyBidAdapter extends RecyclerView.Adapter<MyBidAdapter.MyBidHolder>
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                click.onClick(position,true);
+                click.onClick(position,true,1);
             }
         });
     }

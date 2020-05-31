@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.cardview.widget.CardView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 app:civ_border_color="@color/black"
                 app:cardCornerRadius="@dimen/_15sdp"
                 android:layout_marginStart="5dp"
@@ -48,14 +48,25 @@
                     android:textSize="@dimen/_14sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvRvDateJobCmplt"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_gravity="center_vertical"
+                    android:text="Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/tvRvLocationJobCmplt"
-                    android:textColor="@color/black"
+                    android:textColor="@color/grey"
                     android:textSize="@dimen/_12sdp"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_gravity="center_vertical"
                     android:text="Location"
-                    android:layout_width="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_width="@dimen/_160sdp"
                     android:layout_height="wrap_content"/>
 
 
@@ -64,34 +75,32 @@
 
         </LinearLayout>
 
-        <TextView
+        <RatingBar
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:id="@+id/tvRvDatejobCmplt"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_gravity="center_vertical"
-            android:text="Date"
-            android:textSize="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:id="@+id/jobsRating"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:layout_gravity="center_vertical"
+            android:numStars="5"
+            android:layout_marginTop="9dp"
+            android:stepSize="0.1" />
 
         <TextView
             android:id="@+id/tvTimeJobCmplt"
-            android:layout_below="@id/tvRvDatejobCmplt"
+            android:layout_below="@id/jobsRating"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textColor="@color/olive"
             android:textSize="@dimen/_12sdp"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_gravity="center_vertical"
             android:text="Time"
-            android:layout_width="wrap_content"
+            android:paddingStart="3dp"
+            android:layout_width="@dimen/_60sdp"
             android:layout_height="wrap_content"/>
-
-
-
 
     </RelativeLayout>
 

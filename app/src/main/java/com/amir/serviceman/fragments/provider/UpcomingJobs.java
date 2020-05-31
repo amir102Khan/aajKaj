@@ -15,30 +15,30 @@ import android.view.ViewGroup;
 
 import com.amir.serviceman.R;
 import com.amir.serviceman.activities.ProjectDetails;
-import com.amir.serviceman.adapter.JobsCompletedAdapter;
-import com.amir.serviceman.adapter.MyBidAdapter;
-import com.amir.serviceman.core.BaseFragment;
-import com.amir.serviceman.databinding.FragmentJobsCompletedBinding;
+import com.amir.serviceman.adapter.JobListForContractor;
+import com.amir.serviceman.adapter.UpcomingJobsAdapter;
+import com.amir.serviceman.databinding.FragmentSearchJobBinding;
+import com.amir.serviceman.databinding.FragmentUpcomingJobsBinding;
 import com.amir.serviceman.interfaces.OnAdapterItemClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class JobsCompleted extends BaseFragment  implements OnAdapterItemClick {
-private JobsCompletedAdapter adapter;
-private FragmentJobsCompletedBinding binding;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+public class UpcomingJobs extends Fragment implements OnAdapterItemClick {
+    private FragmentUpcomingJobsBinding binding;
+    private UpcomingJobsAdapter adapter;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_jobs_completed, container, false);
-        return binding.getRoot();
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_upcoming_jobs, container, false);
+        return  binding.getRoot();
     }
 
     @Override
@@ -48,15 +48,14 @@ private FragmentJobsCompletedBinding binding;
     }
 
     private void setEmptyAdapter() {
-
-        adapter = new JobsCompletedAdapter( getActivity(),this);
-        binding.rvListJobsCmplt.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.rvListJobsCmplt.setAdapter(adapter);
+        adapter = new UpcomingJobsAdapter( getActivity(),this);
+        binding.rvUpcmgJob.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true));
+        binding.rvUpcmgJob.setAdapter(adapter);
     }
 
     @Override
     public void onClick(int position, boolean data,int type) {
-        if (type==1){
-        startActivity(new Intent(getActivity(), ProjectDetails.class));}
+        if (type == 1){
+            startActivity(new Intent(getActivity(), ProjectDetails.class));}
     }
 }
