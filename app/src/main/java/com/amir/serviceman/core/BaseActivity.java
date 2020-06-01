@@ -71,8 +71,8 @@ public class BaseActivity extends AppCompatActivity implements Constants {
 
     public Retrofit retrofitCall() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.readTimeout(60, TimeUnit.SECONDS);
-        builder.connectTimeout(60, TimeUnit.SECONDS);
+        builder.readTimeout(120, TimeUnit.SECONDS);
+        builder.connectTimeout(120, TimeUnit.SECONDS);
         OkHttpClient okHttpClient = builder
                 .build();
         return new Retrofit.Builder()

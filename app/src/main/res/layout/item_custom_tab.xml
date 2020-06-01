@@ -6,6 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingTop="@dimen/_4sdp"
+    android:paddingEnd="@dimen/_2sdp"
     android:paddingBottom="@dimen/_2sdp">
 
     <ImageView

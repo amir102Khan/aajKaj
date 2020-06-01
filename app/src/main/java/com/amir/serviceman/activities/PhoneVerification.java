@@ -1,9 +1,12 @@
 package com.amir.serviceman.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,6 +22,7 @@ import com.amir.serviceman.util.Common;
 import com.amir.serviceman.util.Dialogs;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.FileOutputStream;
 import java.lang.reflect.Type;
 
 import okhttp3.MediaType;
@@ -278,11 +282,25 @@ public class PhoneVerification extends BaseActivity implements View.OnClickListe
         MultipartBody.Part profile_image = null;
         MultipartBody.Part id_Proof = null;
         if (signUpUserModel.getProfileImage() != null) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeFile(signUpUserModel.getProfileImage().getPath());
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, new FileOutputStream(signUpUserModel.getProfileImage()));
+            } catch (Throwable t) {
+                Log.e("ERROR", "Error compressing file." + t.toString());
+                t.printStackTrace();
+            }
             RequestBody photo_req = RequestBody.create(MediaType.parse("multipart/form-data"), signUpUserModel.getProfileImage());
             profile_image = MultipartBody.Part.createFormData("profile_image", signUpUserModel.getProfileImage().getName(), photo_req);
         }
 
         if (signUpUserModel.getProfileId() != null) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeFile(signUpUserModel.getProfileId().getPath());
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, new FileOutputStream(signUpUserModel.getProfileId()));
+            } catch (Throwable t) {
+                Log.e("ERROR", "Error compressing file." + t.toString());
+                t.printStackTrace();
+            }
             RequestBody photo_req = RequestBody.create(MediaType.parse("multipart/form-data"), signUpUserModel.getProfileId());
             id_Proof = MultipartBody.Part.createFormData("idproof", signUpUserModel.getProfileId().getName(), photo_req);
         }
