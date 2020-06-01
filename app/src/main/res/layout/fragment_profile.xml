@@ -92,6 +92,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingStart="20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:textSize="@dimen/_12sdp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_ctg_pro"
+                    android:text="category"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:textSize="@dimen/_10sdp"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -269,6 +285,18 @@
                 android:textColor="@color/taxyYellow"
                 android:theme="@style/SCBSwitch" />
         </LinearLayout>
+        <Button
+            android:id="@+id/btnUpdateProfile"
+            android:text="Update Profile"
+            android:paddingStart="@dimen/_30sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/_160sdp"
+            android:background="@drawable/rounded_with_white_bg"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"/>
 
         <Button
             android:id="@+id/logout"
@@ -277,11 +305,11 @@
             android:paddingEnd="@dimen/_30sdp"
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_160sdp"
             android:background="@drawable/background_white_rounded"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_15sdp"/>
+            android:layout_marginTop="@dimen/_10sdp"/>
     </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
