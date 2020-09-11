@@ -49,7 +49,7 @@ public class UpcomingJobs extends Fragment implements OnAdapterItemClick {
 
     private void setEmptyAdapter() {
         adapter = new UpcomingJobsAdapter( getActivity(),this);
-        binding.rvUpcmgJob.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true));
+        binding.rvUpcmgJob.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,true));
         binding.rvUpcmgJob.setAdapter(adapter);
     }
 

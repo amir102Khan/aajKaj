@@ -16,4 +16,13 @@ public interface Constants {
     String ANDROID_DEVICE_TYPE = "2";
     int PERMISSION_REQUEST_CODE_CG = 100;
     int PERMISSION_REQUEST_CODE_LOCATION = 101;
+
+    String PROJECT_NAME = "projectName";
+    String BUISNES_TYPE = "buisnessType";
+    String JOB_TYPE = "jobType";
+    String EMPLOYEE_TYPE = "employeeType";
+    String PROJECT_ADDRESS = "projectAddress";
+    String LAT = "lat";
+    String LNG = "lng";
+
 }

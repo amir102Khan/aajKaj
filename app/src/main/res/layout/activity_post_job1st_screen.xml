@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:text="Business type"
+                    android:text="Job required at:"
                     android:textColor="@color/taxyYellow"
                     android:textSize="@dimen/_15sdp" />
 
@@ -68,7 +68,7 @@
                         android:id="@+id/rdIndpendent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Independent"
+                        android:text="Home"
                         android:textSize="@dimen/_12sdp" />
 
 
@@ -76,7 +76,7 @@
                         android:id="@+id/rdCompany"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Company"
+                        android:text="Business"
                         android:textSize="@dimen/_12sdp" />
                 </RadioGroup>
 
@@ -92,9 +92,17 @@
                     android:textColor="@color/taxyYellow"
                     android:textSize="@dimen/_15sdp" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvJTYpe"
+                    android:layout_below="@id/tvJType"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <com.llollox.androidprojects.compoundbuttongroup.CompoundButtonGroup
                     android:id="@+id/rdJType"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvJType"
@@ -109,7 +117,7 @@
                     android:id="@+id/tvEType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/rdJType"
+                    android:layout_below="@id/rvJTYpe"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:text="Employee type"
@@ -182,12 +190,12 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <include layout="@layout/layout_loader"
-                    android:id="@+id/loader"
-                    android:visibility="gone"/>
+
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
 
-
+        <include layout="@layout/layout_loader"
+            android:id="@+id/loader"
+            android:visibility="gone"/>
     </RelativeLayout>
 </layout>

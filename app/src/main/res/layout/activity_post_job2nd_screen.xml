@@ -78,18 +78,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:text="Day"
+                android:text="Date"
                 android:layout_below="@id/layoutTime"
                 android:textColor="@color/taxyYellow"
                 android:textSize="@dimen/_15sdp" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <TextView
                 android:layout_below="@id/tvDay"
-                android:id="@+id/rvDay"
+                android:id="@+id/edDAte"
+                android:textSize="@dimen/_12sdp"
+                android:background="@drawable/ic_background"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
+                android:padding="@dimen/_5sdp"
                 android:layout_height="wrap_content"/>
 
 
@@ -102,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_below="@id/rvDay"
+                android:layout_below="@id/edDAte"
                 android:gravity="left|center"
                 android:text="Immediately start"
                 android:textColor="@color/taxyYellow"

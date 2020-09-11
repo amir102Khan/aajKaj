@@ -14,6 +14,7 @@
         android:background="@drawable/rv_adapter_selector"
         android:padding ="2dp">
         <LinearLayout
+            android:layout_toStartOf="@id/btnRvApply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -44,8 +45,9 @@
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_gravity="center_vertical"
                     android:text="Project Name"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_width="@dimen/_160sdp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/tvRvLocation"
@@ -62,16 +64,17 @@
 
         </LinearLayout>
         <Button
-            android:layout_width="@dimen/_55sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:layout_height = "wrap_content"
             android:text="Apply"
             android:layout_marginTop="10dp"
             android:id="@+id/btnRvApply"
             android:textAllCaps="false"
             android:layout_marginEnd="5dp"
-            android:textColor="@color/darkGreen"
+            android:padding="@dimen/_5sdp"
+            android:textColor="@color/white"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/dotted_background"/>
+            android:background="@drawable/dotted_black_background"/>
 
 
     </RelativeLayout>

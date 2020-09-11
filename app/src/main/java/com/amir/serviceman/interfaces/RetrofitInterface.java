@@ -1,6 +1,5 @@
 package com.amir.serviceman.interfaces;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
@@ -37,7 +36,7 @@ public interface RetrofitInterface {
             @Part("device_type") RequestBody device_type,
             @Part("device_id") RequestBody device_id,
             @Part("device_token") RequestBody device_token,
-            @Part("role")RequestBody role,
+            @Part("role") RequestBody role,
             @Part MultipartBody.Part id_proof,
             @Part MultipartBody.Part profileImage
     );
@@ -49,11 +48,10 @@ public interface RetrofitInterface {
     Call<ResponseBody> updateProfile(@Header("Authorization") String authHeader,
                                      @Path("firstname") RequestBody firstName,
                                      @Path("lastname") RequestBody lastname,
-                                     @Path("lat")RequestBody lat,
-                                     @Part("lng")RequestBody lng,
+                                     @Path("lat") RequestBody lat,
+                                     @Part("lng") RequestBody lng,
                                      @Part MultipartBody.Part idProof,
                                      @Part MultipartBody.Part profileImage);
-
 
 
     @POST("user/logout")
@@ -61,10 +59,10 @@ public interface RetrofitInterface {
 
     @FormUrlEncoded
     @POST("user/login")
-    Call<ResponseBody> login(@Field("phone")String phone,
-                             @Field("device_id")String deviceId,
-                             @Field("device_token")String deviceTOken,
-                             @Field("device_type")String deviceType);
+    Call<ResponseBody> login(@Field("phone") String phone,
+                             @Field("device_id") String deviceId,
+                             @Field("device_token") String deviceTOken,
+                             @Field("device_type") String deviceType);
 
 
     @FormUrlEncoded
@@ -74,42 +72,60 @@ public interface RetrofitInterface {
     @FormUrlEncoded
     @POST("user/contractorlist")
     Call<ResponseBody> contractorList(@Header("Authorization") String authHeader,
-                                      @Field("search")String search,
-                                      @Field("filter_category")String category);
+                                      @Field("search") String search,
+                                      @Field("filter_category") String category);
 
     @FormUrlEncoded
     @POST("project/getuserprojects")
-    Call<ResponseBody> getUserProjects(@Header("Authorization")String authHeader,
-                                       @Field("status")int status);
+    Call<ResponseBody> getUserProjects(@Header("Authorization") String authHeader,
+                                       @Field("status") int status);
 
 
     @FormUrlEncoded
     @POST("project/projectdetails")
-    Call<ResponseBody> getProjectDetails(@Header("Authorization")String authHeader,
-                                       @Field("p_id")int pId);
+    Call<ResponseBody> getProjectDetails(@Header("Authorization") String authHeader,
+                                         @Field("p_id") int pId);
 
     @FormUrlEncoded
     @POST("user/contractorlist")
-    Call<ResponseBody> getJobProviders(@Header("Authorization")String authHeader,
-                                         @Field("search") String search,
-                                       @Field("filter_category") Integer filterCat );
+    Call<ResponseBody> getJobProviders(@Header("Authorization") String authHeader,
+                                       @Field("search") String search,
+                                       @Field("filter_category") Integer filterCat);
 
     @FormUrlEncoded
+    @POST("project/getall")
+    Call<ResponseBody>  getNearbyProject (@Header("Authorization") String authHeader,
+                                          @Field("lat") String lat,
+                                          @Field("lng")String lng);
+
+    @FormUrlEncoded
+    @POST("project/addbid")
+    Call<ResponseBody> bidOnProject (@Header("Authorization") String authHeader,
+                                     @Field("p_id")int projectId,
+                                     @Field("amount")String amount);
+
+
+    @FormUrlEncoded
+    @POST("project/getallbiddedprojects")
+    Call<ResponseBody> getMyBid(@Header("Authorization")String authHeader);
+
+    @Multipart
     @POST("project/createproject")
-    Call<ResponseBody> createJob(@Header("Authorization")String authHeader,
-                                 @Field("project_name") String projectName,
-                                 @Field("business_type") String btype,
-                                 @Field("job_type") String jobtype ,
-                                 @Field("employee_type") String employee_type ,
-                                 @Field("location") String location ,
-                                 @Field("lat") String lat,
-                                 @Field("lng") String  lng,
-                                 @Field("work_start_time") String  sTime,
-                                 @Field("work_end_time") String  eTime,
-                                 @Field("salary_hourly") String  hrSal,
-                                 @Field("salary_monthly") String  monthSal,
-                                 @Field("immediate_start") String  immi_start,
-                                 @Field("days[]") ArrayList<String> days );
+    Call<ResponseBody> createJob(@Header("Authorization") String authHeader,
+                                 @Part("project_name") RequestBody projectName,
+                                 @Part("business_type") RequestBody btype,
+                                 @Part("job_type") RequestBody jobtype,
+                                 @Part("employee_type") RequestBody employee_type,
+                                 @Part("location") RequestBody location,
+                                 @Part("lat") RequestBody lat,
+                                 @Part("lng") RequestBody lng,
+                                 @Part("work_start_time") RequestBody sTime,
+                                 @Part("work_end_time") RequestBody eTime,
+                                 @Part("salary_hourly") RequestBody hrSal,
+                                 @Part("salary_monthly") RequestBody monthSal,
+                                 @Part("immediate_start") RequestBody immi_start,
+                                 @Part("date")RequestBody days,
+                                 @Part MultipartBody.Part[] image);
 
 
 }

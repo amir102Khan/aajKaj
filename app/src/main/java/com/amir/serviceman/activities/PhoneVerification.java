@@ -327,7 +327,8 @@ public class PhoneVerification extends BaseActivity implements View.OnClickListe
                 Common.getRequestBodyOfString(Common.deviceId(mContext)),
                 Common.getRequestBodyOfString(""),
                 Common.getRequestBodyOfString(role),
-                id_Proof, profile_image);
+                id_Proof,
+                profile_image);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

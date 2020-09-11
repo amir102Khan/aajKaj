@@ -10,15 +10,21 @@
         >
         <include layout="@layout/layout_toolbar"
             android:id="@+id/toolbar"/>
-        <androidx.core.widget.NestedScrollView
+        <View
+            android:id="@+id/view"
             android:layout_below="@id/toolbar"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+        <androidx.core.widget.NestedScrollView
+            android:layout_below="@id/view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_profile"
+                android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/_10sdp">
                 <LinearLayout
@@ -38,6 +44,7 @@
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:text="Customer Name"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
                     <TextView
@@ -52,6 +59,7 @@
 
                     <TextView
                         android:id="@+id/tvAddress"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
@@ -71,6 +79,7 @@
 
                     <TextView
                         android:id="@+id/tvTime"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
@@ -90,6 +99,7 @@
 
                     <TextView
                         android:id="@+id/tvJob"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
@@ -113,7 +123,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:text="Days"
+                        android:text="Date"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
                     <TextView
@@ -122,7 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Days"
+                        android:text="Date"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp" />
 
@@ -133,6 +144,7 @@
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:text="Salary"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
                     <TextView
@@ -151,6 +163,7 @@
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:text="Project Images"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
                     <LinearLayout
@@ -194,8 +207,8 @@
                         android:layout_marginEnd="@dimen/_15sdp"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:background="@drawable/background_white_rounded"/>
+                        android:textColor="@color/white"
+                        android:background="@drawable/dotted_black_background"/>
 
 
 

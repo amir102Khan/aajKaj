@@ -22,6 +22,7 @@
             android:id="@+id/profileImageRv"
             app:civ_border_width="0.5dp"
             android:layout_weight="1"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="0dp"
             app:civ_border_color="@color/black"
             android:layout_width="60.00dp"
@@ -64,10 +65,11 @@
                 <TextView
                     android:id="@+id/tvRvPhnNum"
                     android:textColor="@color/darkGreen"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_gravity="center_vertical"
                     android:text="Phone Number"
+                    android:layout_marginBottom="@dimen/_7sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

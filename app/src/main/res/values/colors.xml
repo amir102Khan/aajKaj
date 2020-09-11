@@ -13,6 +13,7 @@
     <color name="grey">#57646C</color>
     <color name="green">#80C783</color>
     <color name="lightGrey">#637A88</color>
+    <color name="lightGrey2">#929597</color>
     <color name="springGreen">#00FF7F</color>
     <color name="olive">#808000</color>
     <color name="lightseagreen">#20B2AA</color>
@@ -20,6 +21,8 @@
     <color name="bluuee">#5bc0de</color>
     <color name="cream">#fff9f7</color>
     <color name="taxyYellow">#FEBB1B</color>
+    <color name="newYellow">#F1DCA9</color>
+    <color name="newORange">#fe4a1b</color>
     <color name="extraLightGreen">#F8D072</color>
 
 </resources>

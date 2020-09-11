@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/rounded_with_white_bg"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvCaption"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Add your bid amount on project"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_below="@id/tvCaption"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:id="@+id/lay"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/black"
+            android:id="@+id/tvAmountCaption"
+            android:text="₹ :"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:layout_toEndOf="@id/tvAmountCaption"
+            android:id="@+id/edAmount"
+            android:inputType="number"
+            android:textSize="@dimen/_13sdp"
+            android:maxLength="4"
+            android:minLines="1"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btApply"
+        android:layout_below="@id/lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/background_taxi_rounded"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="Apply"
+        android:textColor="@color/white" />
+</RelativeLayout>

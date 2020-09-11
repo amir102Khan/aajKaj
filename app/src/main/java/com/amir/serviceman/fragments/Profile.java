@@ -188,7 +188,13 @@ public class Profile extends BaseFragment implements View.OnClickListener, Adapt
                         } else {
                             Dialogs.alertDialog(data.getMessage(), mContext);
                         }
-                    } else {
+                    }
+                    else if (response.code() == 403) {
+                        sp.clearData();
+                        startActivity(new Intent(mContext, WelcomeScreen.class));
+                        mContext.finish();
+                    }
+                    else {
                         Dialogs.alertDialog(getString(R.string.SERVER_ERROR_MSG), mContext);
                     }
                 } catch (Exception ex) {

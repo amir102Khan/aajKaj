@@ -26,4 +26,17 @@
         <item name="colorSwitchThumbNormal">#ffffff
         </item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/taxyYellow</item>
+    </style>
+
+    <style name="yearPickerDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="textColorAlertDialogListItem">@android:color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+
+    </style>
 </resources>

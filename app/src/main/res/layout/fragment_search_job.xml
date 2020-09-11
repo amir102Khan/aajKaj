@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"/>
 
 
+
         <include android:id="@+id/loader"
             android:visibility="gone"
             layout="@layout/layout_loader"/>

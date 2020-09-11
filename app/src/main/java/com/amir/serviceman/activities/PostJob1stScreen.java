@@ -6,14 +6,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.amir.serviceman.Model.CategoriesModel;
 import com.amir.serviceman.Model.CreateJobModel;
 import com.amir.serviceman.Model.LogoutModel;
 import com.amir.serviceman.R;
+import com.amir.serviceman.adapter.CategotyTypeAdapter;
 import com.amir.serviceman.adapter.RadioButtonAdapter;
 import com.amir.serviceman.core.BaseActivity;
 import com.amir.serviceman.databinding.ActivityPostJob1stScreenBinding;
@@ -40,7 +45,9 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
     private RadioButtonAdapter adapter;
     private ArrayList<String> radios = new ArrayList<>();
     private String selecBType,selecJType,selecEmpType,projectName;
-
+    private ArrayList<CategoriesModel.Datum> categories = new ArrayList<>();
+    private List<String> categoriesName = new ArrayList<>();
+    private CategotyTypeAdapter categotyTypeAdapter ;
 
     private boolean isChecking = true;
     private int mCheckedId;
@@ -55,30 +62,120 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
         clickRadioBtnToGetVal();
         checkLocationPermission();
         implementListener();
+
+        setEmptyAddapter();
+        if (checkInternetConnection()){
+            getCategories();
+        }
+        else {
+            showToast(getString(R.string.no_internet));
+        }
     }
 
+    private void setEmptyAddapter(){
+        // set a GridLayoutManager with default vertical orientation and 2 number of columns
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        binding.rvJTYpe.setLayoutManager(gridLayoutManager);
+      //  binding.rvJTYpe.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,true));
+        categotyTypeAdapter = new CategotyTypeAdapter(categories,mContext);
+
+        adapter = new RadioButtonAdapter(radios,mContext);
+        binding.rvJTYpe.setAdapter(adapter);
+
+    }
     private void implementListener() {
 
         binding.btnNext.setOnClickListener(this);
     }
 
+    private void getCategories(){
+        showLoader();
+        call = api.getCategories();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Type type = new TypeToken<CategoriesModel>(){}.getType();
+                    if (response.code() == 200){
+                        CategoriesModel data = gson.fromJson(response.body().string(),type);
+                        if (data.getType().equals("success")){
+                            categories.clear();
+                            categories.addAll(data.getData());
+                            setSpinnerAdapter();
+                        }
+                        else {
+                            Dialogs.alertDialog(data.getMessage(),mContext);
+                        }
+                    }
+                    else {
+                        Dialogs.alertDialog(getString(R.string.SERVER_ERROR_MSG),mContext);
+                    }
+                }
+                catch (Exception ex){
+                    Dialogs.alertDialog(ex.getMessage(),mContext);
+                }
+                hideLoader();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                hideLoader();
+                Dialogs.alertDialog(t.getMessage(),mContext);
+
+            }
+        });
+    }
+
+    private void setSpinnerAdapter(){
+        for (int i = 0; i < categories.size() ; i ++){
+            categoriesName.add(categories.get(i).getCategory());
+            radios.add(categories.get(i).getCategory());
+        }
+        binding.rdJType.reDraw();
+        binding.rdJType.setEntries(categoriesName);
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public void onClick(View v) {
         if (v == binding.btnNext) {
-            startActivity(new Intent(mContext, PostJob2ndScreen.class)
-                    .putExtra("projectName", projectName)
-            .putExtra("businessType",selecBType)
-            .putExtra("jobType",selecJType)
-            .putExtra("EmpType",selecEmpType)
-            .putExtra("contrAddress",conAddress)
-            .putExtra("lat",latitude)
-            .putExtra("lng",longitude));
+            validation();
           //createJobForContractor();
         }
     }
 
-    private void clickRadioBtnToGetVal(){
+    private void validation (){
         projectName = binding.edProjectName.getText().toString();
+        conAddress = binding.edLocation.getText().toString();
+        selecJType = adapter.getSeletedPosition();
+        if (!Common.validateEditText(projectName)){
+            showToast("please enter project name");
+        }
+        else if (!Common.validateEditText(selecBType)){
+            showToast("please select where do you require job");
+        }
+        else if (!Common.validateEditText(selecJType)){
+            showToast("please select the job type");
+        }
+        else if (!Common.validateEditText(selecEmpType)){
+            showToast("please select employee type");
+        }
+        else if (!Common.validateEditText(conAddress)){
+            showToast("please select project address");
+        }
+        else {
+            startActivity(new Intent(mContext, PostJob2ndScreen.class)
+                    .putExtra(PROJECT_NAME, projectName)
+                    .putExtra(BUISNES_TYPE,selecBType)
+                    .putExtra(JOB_TYPE,selecJType)
+                    .putExtra(EMPLOYEE_TYPE,selecEmpType)
+                    .putExtra(PROJECT_ADDRESS,conAddress)
+                    .putExtra(LAT,latitude)
+                    .putExtra(LNG,longitude));
+        }
+    }
+
+    private void clickRadioBtnToGetVal(){
         // business type radio buttons
         binding.rdBTypeGrp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
