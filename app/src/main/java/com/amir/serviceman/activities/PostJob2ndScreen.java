@@ -21,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.amir.serviceman.Model.CreateJobModel;
 import com.amir.serviceman.Model.DayModel;
@@ -36,6 +35,7 @@ import com.amir.serviceman.util.PermissionHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.jzxiang.pickerview.listener.OnDateSetListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -67,17 +67,19 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
     private String selectedDate = "";
     private DatePickerDialog pickerDialog;
 
+    // for calling api
+    private String startTime="";
+    private String endTime = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post_job2nd_screen);
         Common.setToolbarWithBackAndTitle(mContext, "Create a job", true, R.drawable.ic_arrow_back_black_24dp);
-        loader = loader = (ConstraintLayout) binding.loader.getRoot();
+         loader = (ConstraintLayout) binding.loader.getRoot();
         implementListener();
 
     }
-
-
 
 
     private void implementListener() {
@@ -92,7 +94,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         String lat = getIntent().getStringExtra(LAT);
         String lng = getIntent().getStringExtra(LNG);
         String address = getIntent().getStringExtra(PROJECT_ADDRESS);
-        String jType = getIntent().getStringExtra(JOB_TYPE);
+        int jType = getIntent().getIntExtra(JOB_TYPE,-1);
         String empType = getIntent().getStringExtra(EMPLOYEE_TYPE);
         String bType = getIntent().getStringExtra(BUISNES_TYPE);
         String projectName = getIntent().getStringExtra(PROJECT_NAME);
@@ -102,27 +104,22 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         String salaryMonth = binding.edMonthly.getText().toString();
         String val = " ";
         if (binding.switchImmediatelyStart.isChecked()) {
-            val = String.valueOf(true);
+            val = "1";
         } else {
-            val = String.valueOf(false);
+            val = "0";
         }
 
-        if (!Common.validateEditText(startWork)){
+        if (!Common.validateEditText(startWork)) {
             showToast("please select start time");
-        }
-        else if (!Common.validateEditText(endWork)){
+        } else if (!Common.validateEditText(endWork)) {
             showToast("please select end time");
-        }
-        else if (!Common.validateEditText(salaryHr)){
+        } else if (!Common.validateEditText(salaryHr)) {
             showToast("please mention hourly salary");
-        }
-        else if (!Common.validateEditText(salaryMonth)){
+        } else if (!Common.validateEditText(salaryMonth)) {
             showToast("please mention monthly salary");
-        }
-        else if (!Common.validateEditText(selectedDate)){
+        } else if (!Common.validateEditText(selectedDate)) {
             showToast("please select date");
-        }
-        else {
+        } else {
             createJobForContractor(projectName, bType, jType, empType, address, lat, lng, startWork, endWork, salaryHr, salaryMonth, val, days);
         }
 
@@ -131,25 +128,24 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == binding.tvFrom) {
-            openTimePicker(true);
+            //openTimePicker(true);
+            openTime(true);
         } else if (v == binding.tvTo) {
-            openTimePicker(false);
+            openTime(false);
+          //  openTimePicker(false);
         } else if (v == binding.btnPostJob) {
             getValFromPost1();
-        }
-        else if (v == binding.imgProduct){
+        } else if (v == binding.imgProduct) {
             checkPermission();
-        }
-        else if (v == binding.edDAte){
+        } else if (v == binding.edDAte) {
             getDate();
         }
     }
 
-    private void checkPermission(){
-        if (PermissionHelper.checkPermissionCG(mContext)){
+    private void checkPermission() {
+        if (PermissionHelper.checkPermissionCG(mContext)) {
             EasyImage.openCamera(mContext, 0);
-        }
-        else {
+        } else {
             PermissionHelper.requestPermissionCG(mContext);
         }
     }
@@ -160,8 +156,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         if (requestCode == PERMISSION_REQUEST_CODE_CG) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 EasyImage.openCamera(mContext, 0);
-            }
-            else {
+            } else {
                 if (!ActivityCompat.shouldShowRequestPermissionRationale(mContext, Manifest.permission.CAMERA) ||
                         !ActivityCompat.shouldShowRequestPermissionRationale(mContext, Manifest.permission.READ_EXTERNAL_STORAGE) ||
                         !ActivityCompat.shouldShowRequestPermissionRationale(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -215,7 +210,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         });
     }
 
-    private void getDate(){
+    private void getDate() {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
         int month = cldr.get(Calendar.MONTH);
@@ -226,7 +221,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
                 binding.edDAte.setText(day + "/" + (month + 1) + "/" + year);
                 selectedDate = year + "-" + (month + 1) + "-" + day;
             }
-        },year,month,day);
+        }, year, month, day);
         pickerDialog.getDatePicker().setMinDate(cldr.getTimeInMillis());
         pickerDialog.show();
     }
@@ -278,6 +273,71 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         mTimePicker.show();
     }
 
+    private void openTime(final boolean isFromTime) {
+        long tenYears = 10L * 365 * 1000 * 60 * 60 * 24L;
+
+        com.jzxiang.pickerview.TimePickerDialog timePickerDialog = new com.jzxiang.pickerview.TimePickerDialog
+                .Builder()
+                .setCancelStringId("Cancel")
+                .setSureStringId("Ok")
+                .setTitleStringId("TimePicker")
+                .setHourText(" Hour")
+                .setMinuteText(" Minute")
+                .setThemeColor(getResources().getColor(R.color.taxyYellow))
+                .setType(com.jzxiang.pickerview.data.Type.HOURS_MINS)
+                .setCyclic(false)
+                .setCallBack(new OnDateSetListener() {
+                    @Override
+                    public void onDateSet(com.jzxiang.pickerview.TimePickerDialog timePickerView, long millseconds) {
+
+
+                        String generatedTime = "";
+                        SimpleDateFormat inputFormat = new SimpleDateFormat("HH:mm");
+                        SimpleDateFormat outputFormat = new SimpleDateFormat("hh:mm aa");
+
+                        try {
+                            generatedTime =  getDateToString(millseconds,timeFormat1);
+                            Date date = inputFormat.parse(generatedTime);
+                            if (!isFromTime) {
+                                if (Common.validateEditText(binding.tvFrom.getText().toString())) {
+                                    Date fromDate = inputFormat.parse(binding.tvFrom.getText().toString());
+                                    Date toDate = inputFormat.parse(generatedTime);
+                                    if (fromDate.after(toDate)) {
+                                        binding.tvTo.setText("");
+                                        Dialogs.alertDialog(getString(R.string.from_time_more_than_to_time), mContext);
+                                        return;
+                                    }
+                                } else {
+                                    Dialogs.alertDialog(getString(R.string.select_from_time_first), mContext);
+                                    return;
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        if (isFromTime) {
+                            startTime = getDateToString(millseconds,timeFormat2);
+                            binding.tvFrom.setText(generatedTime);
+                        } else {
+                            endTime = getDateToString(millseconds,timeFormat2);
+                            binding.tvTo.setText(generatedTime);
+                        }
+                    }
+                })
+                .build();
+
+        timePickerDialog.show(getSupportFragmentManager(), "tag");
+
+    }
+
+    private String getDateToString(long time,String format) {
+        SimpleDateFormat sf = new SimpleDateFormat(format);
+        Date d = new Date(time);
+        return sf.format(d);
+    }
+
+
     @Override
     public void onClick(int position, boolean data, int type) {
         if (data) {
@@ -292,7 +352,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
     }
 
 
-    private void createJobForContractor(String name, String bt, String jt, String et,
+    private void createJobForContractor(String name, String bt, int jt, String et,
                                         String loc, String lat,
                                         String lng, String from, String to,
                                         String hrSal, String monthSal,
@@ -303,7 +363,7 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         String workEndTime = selectedDate + " " + to + ":00";
         MultipartBody.Part[] parts = new MultipartBody.Part[images.size()];
 
-        for (int i = 0;i < images.size();i ++){
+        for (int i = 0; i < images.size(); i++) {
             File imageFile = new File(images.get(i).getPath());
             try {
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getPath());
@@ -312,8 +372,8 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
                 Log.e("ERROR", "Error compressing file." + t.toString());
                 t.printStackTrace();
             }
-            RequestBody requestImageFile = RequestBody.create(MediaType.parse("multipart/form-data"),imageFile);
-            parts[i]=MultipartBody.Part.createFormData("image[]",imageFile.getName(),requestImageFile);
+            RequestBody requestImageFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
+            parts[i] = MultipartBody.Part.createFormData("image[]", imageFile.getName(), requestImageFile);
         }
 
 
@@ -325,10 +385,10 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
         }
         showLoader();
         call = api.createJob(apiTOken,
-                Common.getRequestBodyOfString(name) ,
-               Common.getRequestBodyOfString(bt),
-               Common.getRequestBodyOfString(jt) ,
-               Common.getRequestBodyOfString(et),
+                Common.getRequestBodyOfString(name),
+                Common.getRequestBodyOfString(bt),
+                Common.getRequestBodyOfString(String.valueOf(jt)),
+                Common.getRequestBodyOfString(et),
                 Common.getRequestBodyOfString(loc),
                 Common.getRequestBodyOfString(lat),
                 Common.getRequestBodyOfString(lng),
@@ -347,13 +407,13 @@ public class PostJob2ndScreen extends BaseActivity implements View.OnClickListen
                     Type type = new TypeToken<CreateJobModel>() {
                     }.getType();
                     if (response.code() == 200) {
-                       Gson gson1 = new GsonBuilder().setLenient().create();
+                        Gson gson1 = new GsonBuilder().setLenient().create();
 
                         CreateJobModel data = gson1.fromJson(response.body().string(), type);
                         if (data.getType().equals("success")) {
-                           // startActivity(new Intent(mContext, Dashboard.class));
                             Toast.makeText(mContext, "successfully submitted", Toast.LENGTH_SHORT).show();
-                            //mContext.finish();
+                            startActivity(new Intent(mContext, Dashboard.class));
+                            mContext.finish();
                         } else {
                             Dialogs.alertDialog(data.getMessage(), mContext);
 

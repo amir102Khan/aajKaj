@@ -25,4 +25,11 @@ public interface Constants {
     String LAT = "lat";
     String LNG = "lng";
 
+    String timeFormat1 = "HH:mm";
+    String timeFormat2 = "yyyy-MM-dd HH:mm:ss";
+
+    String FROM = "from";
+    String MY_JOB = "myJob";
+    String UPCOMING_JOB = "upcomingJob";
+
 }

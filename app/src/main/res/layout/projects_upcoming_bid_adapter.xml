@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tvCancel"
+        android:text="Cancel"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvHire"
+        android:text="Hire"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:layout_toStartOf="@id/tvCancel"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:textSize="@dimen/_13sdp"
+        android:textColor="@color/taxyYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvCall"
+        android:text="Call"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:layout_toStartOf="@id/tvHire"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="@dimen/_13sdp"
+        android:textColor="@color/black"
+        android:text="1. NAme"
+        android:id="@+id/tvName"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_toStartOf="@id/tvCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RatingBar
+        android:id="@+id/pRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:layout_marginStart="@dimen/_17sdp"
+        android:layout_below="@id/tvName"
+        android:stepSize="0.1" />
+    <View
+        android:id="@+id/viewB"
+        android:background="@color/grey"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@id/pRating"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+</RelativeLayout>

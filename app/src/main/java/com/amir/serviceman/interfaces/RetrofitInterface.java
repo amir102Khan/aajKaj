@@ -78,7 +78,7 @@ public interface RetrofitInterface {
     @FormUrlEncoded
     @POST("project/getuserprojects")
     Call<ResponseBody> getUserProjects(@Header("Authorization") String authHeader,
-                                       @Field("status") int status);
+                                       @Field("status") int status,@Field("page") int page);
 
 
     @FormUrlEncoded
@@ -104,8 +104,22 @@ public interface RetrofitInterface {
                                      @Field("p_id")int projectId,
                                      @Field("amount")String amount);
 
+    @FormUrlEncoded
+    @POST("project/acceptbid")
+    Call<ResponseBody> acceptBid(@Header("Authorization") String authHeader,
+                                 @Field("bid_id")int bidId);
 
     @FormUrlEncoded
+    @POST("project/cancelbiduser")
+    Call<ResponseBody> cancelProviderBidByCustomer(@Header("Authorization")String authHeader,
+                                         @Field("bid_id")int bidId);
+
+
+    @FormUrlEncoded
+    @POST("project/cancelbidcontractor")
+    Call<ResponseBody> cancelProviderBid(@Header("Authorization")String authHeader,
+                                         @Field("bid_id")int bidId);
+
     @POST("project/getallbiddedprojects")
     Call<ResponseBody> getMyBid(@Header("Authorization")String authHeader);
 
@@ -126,6 +140,13 @@ public interface RetrofitInterface {
                                  @Part("immediate_start") RequestBody immi_start,
                                  @Part("date")RequestBody days,
                                  @Part MultipartBody.Part[] image);
+
+
+    @FormUrlEncoded
+    @POST("project/projectdetails")
+    Call<ResponseBody> customerProjectDetails(@Header("Authorization") String authHeade,
+                                              @Field("p_id")int projectId);
+
 
 
 }

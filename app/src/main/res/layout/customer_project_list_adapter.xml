@@ -14,7 +14,6 @@
         android:background="@drawable/rv_adapter_selector"
         android:padding ="2dp">
         <LinearLayout
-            android:layout_toStartOf="@id/jobsRating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -30,79 +29,57 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/projectImageJobCmplt"/>
+                    android:id="@+id/projectImg"/>
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/lay">
+                >
                 <TextView
-                    android:id="@+id/tvRvProjectNameJobCmplt"
+                    android:id="@+id/tvRvProjectName"
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_gravity="center_vertical"
                     android:text="Project Name"
-                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/tvRvDateJobCmplt"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_gravity="center_vertical"
-                    android:text="Date"
+                    android:textSize="@dimen/_15sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:id="@+id/tvRvLocationJobCmplt"
+                    android:id="@+id/tvRvLocation"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp"
                     android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_gravity="center_vertical"
                     android:text="Location"
-                    android:paddingBottom="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-
+                <TextView
+                    android:id="@+id/tvProjectDate"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_gravity="center_vertical"
+                    android:text="Date :"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvNoOfBids"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_gravity="center_vertical"
+                    android:text="No of bids:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
+
 
 
         </LinearLayout>
 
-        <RatingBar
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:id="@+id/jobsRating"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:isIndicator="true"
-            android:layout_gravity="center_vertical"
-            android:numStars="5"
-            android:layout_marginTop="9dp"
-            android:stepSize="0.1" />
 
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/tvTimeJobCmplt"
-            android:layout_below="@id/jobsRating"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:textColor="@color/olive"
-            android:textSize="@dimen/_12sdp"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_gravity="center_vertical"
-            android:text="Time"
-            android:paddingStart="3dp"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

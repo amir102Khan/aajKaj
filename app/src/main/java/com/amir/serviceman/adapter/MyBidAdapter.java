@@ -12,17 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.serviceman.Model.ProviderBiddedProjectsModel;
 import com.amir.serviceman.R;
 import com.amir.serviceman.interfaces.OnAdapterItemClick;
+
+import java.util.ArrayList;
 
 public class MyBidAdapter extends RecyclerView.Adapter<MyBidAdapter.MyBidHolder> {
 
     private Context context;
     private OnAdapterItemClick click;
+    private ArrayList<ProviderBiddedProjectsModel.Datum> projects;
 
-    public MyBidAdapter(Context context, OnAdapterItemClick click) {
+    public MyBidAdapter(Context context, OnAdapterItemClick click ,ArrayList<ProviderBiddedProjectsModel.Datum> projects) {
         this.context = context;
         this.click = click;
+        this.projects = projects;
     }
 
     @NonNull
@@ -35,6 +40,15 @@ public class MyBidAdapter extends RecyclerView.Adapter<MyBidAdapter.MyBidHolder>
     @Override
     public void onBindViewHolder(@NonNull final MyBidAdapter.MyBidHolder holder, final int position) {
 
+        holder.tvProjectName.setText(projects.get(position).getProjectName());
+        holder.tvAddress.setText(projects.get(position).getLocation());
+        holder.date.setText(projects.get(position).getDate());
+        holder.btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                click.onClick(position,true,2);
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +59,7 @@ public class MyBidAdapter extends RecyclerView.Adapter<MyBidAdapter.MyBidHolder>
 
     @Override
     public int getItemCount() {
-        return 8;
+        return projects.size();
     }
 
     class MyBidHolder extends RecyclerView.ViewHolder {

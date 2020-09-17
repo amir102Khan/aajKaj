@@ -11,19 +11,20 @@ import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.serviceman.Model.CategoriesModel;
 import com.amir.serviceman.R;
 
 import java.util.ArrayList;
 
 public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.MyViewHolder> {
 
-    private ArrayList<String> radios;
+    private ArrayList<CategoriesModel.Datum> radios;
     private Context context;
-    private String checkedPosition = "";
+    private int checkedPosition = -1;
     private RadioButton lastCheckedRB = null;
 
 
-    public RadioButtonAdapter(ArrayList<String> radios, Context context) {
+    public RadioButtonAdapter(ArrayList<CategoriesModel.Datum> radios, Context context) {
         this.radios = radios;
         this.context = context;
     }
@@ -37,7 +38,7 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.radioButton.setText(radios.get(position));
+        holder.radioButton.setText(radios.get(position).getCategory());
 
 /*
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +84,7 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
                     lastCheckedRB.setChecked(false);
                 }
 
-                checkedPosition = radios.get(position);
+                checkedPosition = radios.get(position).getCId();
                 //store the clicked radiobutton
                 lastCheckedRB = checked_rb;
             }
@@ -97,7 +98,7 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
         return radios.size();
     }
 
-    public String getSeletedPosition(){
+    public int getSeletedCategoryId(){
         return checkedPosition;
     }
 

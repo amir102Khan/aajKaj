@@ -1,8 +1,10 @@
 package com.amir.serviceman.activities;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -13,6 +15,8 @@ import com.amir.serviceman.R;
 import com.amir.serviceman.core.BaseActivity;
 import com.amir.serviceman.databinding.ActivityDashboardBinding;
 import com.amir.serviceman.fragments.Profile;
+import com.amir.serviceman.fragments.customer.CustomerCompletedJobs;
+import com.amir.serviceman.fragments.customer.CustomerUpcomingJobs;
 import com.amir.serviceman.fragments.customer.MyJob;
 import com.amir.serviceman.fragments.customer.SerachProviders;
 import com.amir.serviceman.fragments.provider.JobsCompleted;
@@ -42,6 +46,8 @@ public class Dashboard extends BaseActivity {
 
     private void setUpCustomerTab() {
         setCustomTabView("My Jobs", R.drawable.my_job_selector);
+        setCustomTabView("Upcoming Jobs",R.drawable.upcoming_job_selector);
+        setCustomTabView("Jobs Completed",R.drawable.complte_job_selector);
         setCustomTabView("Search", R.drawable.search_selector);
         setCustomTabView("Profile", R.drawable.profile_selector);
     }
@@ -52,7 +58,6 @@ public class Dashboard extends BaseActivity {
         setCustomTabView("Upcoming Jobs",R.drawable.upcoming_job_selector);
         setCustomTabView("Jobs Completed",R.drawable.complte_job_selector);
         setCustomTabView("Profile", R.drawable.profile_selector);
-
     }
 
     private void setCustomTabView(String text, int icon) {
@@ -69,6 +74,21 @@ public class Dashboard extends BaseActivity {
                 .beginTransaction()
                 .replace(binding.flContainer.getId(), fragment)
                 .commit();
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE_LOCATION){
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+              //  getCurrentLocation();
+                int j = 9;
+                int h = 8;
+            }
+        }
 
     }
 
@@ -102,9 +122,15 @@ public class Dashboard extends BaseActivity {
                             switchToFragment(new MyJob());
                             break;
                         case 1:
-                            switchToFragment(new SerachProviders());
+                            switchToFragment(new CustomerUpcomingJobs());
                             break;
                         case 2:
+                            switchToFragment(new CustomerCompletedJobs());
+                            break;
+                        case 3:
+                            switchToFragment(new SerachProviders());
+                            break;
+                        case 4:
                             switchToFragment(new Profile());
                             break;
                     }

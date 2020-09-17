@@ -19,15 +19,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.ProjectDetails"></activity>
+        <activity android:name=".activities.CustomerProjectDetails"></activity>
+        <activity android:name=".activities.ProjectDetails" />
         <activity android:name=".activities.PhoneVerification" />
         <activity android:name=".activities.PostJob2ndScreen" />
         <activity android:name=".activities.PostJob1stScreen" />
         <activity android:name=".activities.WelcomeScreen" />
         <activity android:name=".activities.Dashboard" />
-        <activity android:name=".activities.CustomerSignUp" >
-
-        </activity>
+        <activity android:name=".activities.CustomerSignUp"></activity>
         <activity android:name=".activities.Login" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

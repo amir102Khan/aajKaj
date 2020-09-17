@@ -52,6 +52,8 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
     private boolean isChecking = true;
     private int mCheckedId;
 
+    private int selectedCategoryId = -1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
       //  binding.rvJTYpe.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,true));
         categotyTypeAdapter = new CategotyTypeAdapter(categories,mContext);
 
-        adapter = new RadioButtonAdapter(radios,mContext);
+        adapter = new RadioButtonAdapter(categories,mContext);
         binding.rvJTYpe.setAdapter(adapter);
 
     }
@@ -131,8 +133,6 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
             categoriesName.add(categories.get(i).getCategory());
             radios.add(categories.get(i).getCategory());
         }
-        binding.rdJType.reDraw();
-        binding.rdJType.setEntries(categoriesName);
         adapter.notifyDataSetChanged();
     }
 
@@ -147,14 +147,15 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
     private void validation (){
         projectName = binding.edProjectName.getText().toString();
         conAddress = binding.edLocation.getText().toString();
-        selecJType = adapter.getSeletedPosition();
+        //selecJType = adapter.getSeletedPosition();
+        selectedCategoryId = adapter.getSeletedCategoryId();
         if (!Common.validateEditText(projectName)){
             showToast("please enter project name");
         }
         else if (!Common.validateEditText(selecBType)){
             showToast("please select where do you require job");
         }
-        else if (!Common.validateEditText(selecJType)){
+        else if (selectedCategoryId == -1){
             showToast("please select the job type");
         }
         else if (!Common.validateEditText(selecEmpType)){
@@ -181,10 +182,10 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(i== R.id.rdIndpendent){
-                    selecBType= binding.rdIndpendent.getText().toString();
+                    selecBType= "1";
 
                 }else if(i==R.id.rdCompany){
-                    selecBType= binding.rdCompany.getText().toString();
+                    selecBType= "2";
 
                 }
                 //Toast.makeText(mContext, selecBType, Toast.LENGTH_SHORT).show();
@@ -196,10 +197,10 @@ public class PostJob1stScreen extends BaseActivity implements View.OnClickListen
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(i== R.id.rdMonthly){
-                    selecEmpType = binding.rdMonthly.getText().toString();
+                    selecEmpType = "1";
 
                 }else if(i==R.id.rdHourly){
-                    selecEmpType = binding.rdHourly.getText().toString();
+                    selecEmpType = "2";
 
                 }
                 //Toast.makeText(mContext, selecEmpType, Toast.LENGTH_SHORT).show();

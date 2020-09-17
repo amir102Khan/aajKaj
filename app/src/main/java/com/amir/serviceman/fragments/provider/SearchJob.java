@@ -2,6 +2,7 @@ package com.amir.serviceman.fragments.provider;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -90,8 +91,6 @@ public class SearchJob extends BaseFragment implements OnAdapterItemClick {
             apiTOken = getLoginUserModelFromSharedPreference(sp).getApiToken();
         }
         showLoader();
-        latitude = "30.746444";
-        longitude = "76.669731";
         call = api.getNearbyProject(apiTOken, latitude, longitude);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -143,6 +142,23 @@ public class SearchJob extends BaseFragment implements OnAdapterItemClick {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE_LOCATION){
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                getCurrentLocation();
+            }
+        }
+    }
 
     private void checkLocationPermission() {
         if (PermissionHelper.checkLocationPermission(mContext)) {
@@ -163,8 +179,8 @@ public class SearchJob extends BaseFragment implements OnAdapterItemClick {
             @Override
             public void onLocationFound(String lat, String lng, String address) {
                 Log.e("location: ", lat + " : " + lng + " : " + address);
-                latitude = "30.746444";
-                longitude = "76.669731";
+                latitude = lat;
+                longitude = lng;
                 if (checkInternetConnection()) {
                     getProjects();
                 } else {
